@@ -8,7 +8,6 @@ const mongoose = require("mongoose");
 const userRouter = require("./routes/users"); // login + register
 
 const app = express();
-//a
 
 app.use(cors());
 app.use(express.json());
