@@ -7,8 +7,8 @@ import "./Login.css";
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [email_validation, setEmail_validation] = useState(true);
-  const [password_validation, setPassword_validation] = useState(true);
+  const [, setEmail_validation] = useState(true);
+  const [, setPassword_validation] = useState(true);
   const { apiCall } = useApiContext();
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
@@ -46,55 +46,49 @@ export const Login = (props) => {
 
   return (
     <div className="loginPageDiv">
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form className="border p-3 rounded" onSubmit={(e) => login(e)}>
-          <h2 className="m-2">Login</h2>
+      <form onSubmit={(e) => login(e)}>
+        <h2>Login</h2>
 
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-              value={email}
-              onChange={emailChangeHandler}
-              type="email"
-              placeholder="example@gmail.com"
-              id="email"
-              name="email"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              value={password}
-              onChange={passwordChangeHandler}
-              type="password"
-              placeholder="*********"
-              id="password"
-              name="password"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-            <small>We'll never share your password with anyone else.</small>
-            <br />
-            <br />
-          </div>
-          <button type="submit" className="btn btn-outline-dark">
-            Log In
-          </button>
+        <div className="form-group">
+          <label>Email address</label>
+          <input
+            value={email}
+            onChange={emailChangeHandler}
+            type="email"
+            placeholder="example@gmail.com"
+            id="email"
+            name="email"
+            aria-label="email"
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            value={password}
+            onChange={passwordChangeHandler}
+            type="password"
+            placeholder="*********"
+            id="password"
+            name="password"
+            aria-label="email"
+          />
+          <small>We'll never share your password with anyone else.</small>
           <br />
           <br />
-          <button
-            className="btn btn-outline-light"
-            onClick={() => props.onFormSwitch("register")}
-          >
-            Don't have an account? Register here
-          </button>
-        </form>
-      </div>
+        </div>
+        <button type="submit">
+          Log In
+        </button>
+        <br />
+        <br />
+        <button
+          type="button"
+          onClick={() => props.onFormSwitch("register")}
+        >
+          Don't have an account? Register here
+        </button>
+      </form>
     </div>
   );
 };
