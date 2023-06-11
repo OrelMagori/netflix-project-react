@@ -7,6 +7,7 @@ import { Login } from "../src/client/pages/Login";
 import { AuthContextProvider } from "../src/client/context/AuthContext";
 import { ApiContextProvider } from "../src/client/context/ApiContext";
 import { Home } from "../src/client/pages/Home";
+import Search from "./client/components/Search";
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,6 +20,7 @@ root.render(
             <Route index element={<App />} />
             <Route path="login" element={<Login />} />
             <Route path="home" element={<Home/>} />
+            <Route path="search" element={<Search/>} />
           </Routes>
         </ApiContextProvider>
       </AuthContextProvider>
