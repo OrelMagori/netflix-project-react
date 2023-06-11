@@ -1,0 +1,27 @@
+.loginPageDiv {
+  position: relative;
+  /* height: 100vh;
+  width: 100%; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.loginPageDiv::before {
+  content: "";
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/01/18/38/background-1789175_960_720.png");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
+
+.app {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
