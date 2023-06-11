@@ -1,25 +1,37 @@
-import React, { useState } from "react";
-import { useApiContext } from "../hooks/useApiContext";
+import React, { useState, useEffect } from "react";
 import "./Register.css";
+import ages from ".././database/ages.json";
+import { useApiContext } from "../hooks/useApiContext";
 
 export const Register = (props) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
+  const [age, setAge] = useState("");
 
   const { apiCall } = useApiContext();
 
-  const [email_validation, setEmail_validation] = useState(true);
-  const [password_validation, setPassword_validation] = useState(true);
-  const [name_validation, setName_validation] = useState(true);
-  const [ID_validation, setID_validation] = useState(true);
+  const [, setEmail_validation] = useState(true);
+  const [, setPassword_validation] = useState(true);
+  const [, setName_validation] = useState(true);
 
-  const nameChangeHandler = (event) => {
+  useEffect(() => {
+    setAge(ages);
+  }, []);
+
+  const firstNameChangeHandler = (event) => {
     if (event.target.value.trim().length > 0) {
       setName_validation(true);
     }
-    setName(event.target.value);
+    setFirstName(event.target.value);
+  };
+
+  const lastNameChangeHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setName_validation(true);
+    }
+    setLastName(event.target.value);
   };
 
   const emailChangeHandler = (event) => {
@@ -36,21 +48,12 @@ export const Register = (props) => {
     setPassword(event.target.value);
   };
 
-  const idChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setID_validation(true);
-    }
-    setId(event.target.value);
-  };
-
   const signup = async (event) => {
     event.preventDefault();
     try {
       const { status, data } = await apiCall("users/signup", "POST", {
         email,
         password,
-        name,
-        id,
       });
       console.log(status);
       console.log(data);
@@ -62,85 +65,48 @@ export const Register = (props) => {
   };
 
   return (
-    <div className="registerPageDiv">
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form className="border p-3 rounded" onSubmit={(e) => signup(e)}>
-          <h2 className="m-2">Register</h2>
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="fullName">Full name</label>
-            <input
-              value={name}
-              onChange={nameChangeHandler}
-              name="name"
-              id="name"
-              placeholder="Israel Israeli"
-              type="text"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="exampleInputEmail">Email address</label>
-            <input
-              value={email}
-              onChange={emailChangeHandler}
-              type="email"
-              placeholder="example@gmail.com"
-              id="email"
-              name="email"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="idField">ID</label>
-            <input
-              value={id}
-              onChange={idChangeHandler}
-              type="number"
-              name="id"
-              id="id"
-              placeholder="Your ID"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="passwordField">Password</label>
-            <input
-              value={password}
-              onChange={passwordChangeHandler}
-              type="password"
-              placeholder="*********"
-              id="password"
-              name="password"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-            <small>We'll never share your password with anyone else.</small>
-            <br />
-            <br />
-          </div>
-          <button type="submit" className="btn btn-outline-dark">
-            Register
-          </button>
-          <br />
-          <br />
-          <button
-            className="btn btn-outline-light"
-            onClick={() => props.onFormSwitch("login")}
-          >
-            Already have an account? Login here
-          </button>
-        </form>
-      </div>
+    <div>
+      <h2>Register</h2>
+      <form onSubmit={(e) => signup(e)}>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={firstNameChangeHandler}
+        />
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={lastNameChangeHandler}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={emailChangeHandler}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={passwordChangeHandler}
+        />
+        <select
+          className="select-wrapper"
+          placeholder="Select Age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        >
+          <option value disabled={true}></option>
+          {ages.agesData.map((result) => (
+            <option key={result.key} value={result.key}>
+              {result.value}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Register</button>
+      </form>
     </div>
   );
 };

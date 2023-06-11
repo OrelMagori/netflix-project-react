@@ -45,48 +45,28 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="loginPageDiv">
+    <div>
+      <h1>Unlimited movies, TV shows, and more</h1>
+      <h3>Watch anywhere. Cancel anytime.</h3>
+      <h5>
+        Ready to watch? Enter your email to create or restart your membership.
+      </h5>
       <form onSubmit={(e) => login(e)}>
-        <h2>Login</h2>
-
-        <div className="form-group">
-          <label>Email address</label>
-          <input
-            value={email}
-            onChange={emailChangeHandler}
-            type="email"
-            placeholder="example@gmail.com"
-            id="email"
-            name="email"
-            aria-label="email"
-          />
-        </div>
-        <br />
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            value={password}
-            onChange={passwordChangeHandler}
-            type="password"
-            placeholder="*********"
-            id="password"
-            name="password"
-            aria-label="email"
-          />
-          <small>We'll never share your password with anyone else.</small>
-          <br />
-          <br />
-        </div>
-        <button type="submit">
-          Log In
-        </button>
-        <br />
-        <br />
-        <button
-          type="button"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Don't have an account? Register here
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={emailChangeHandler}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={passwordChangeHandler}
+        />
+        <button type="submit">Login</button>
+        <button type="button" onClick={() => props.onFormSwitch("register")}>
+          Register
         </button>
       </form>
     </div>

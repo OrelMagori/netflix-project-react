@@ -24,3 +24,45 @@ form {
   text-align: center;
   color: black;
 }
+
+
+
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-wrapper select::-ms-expand {
+  display: none;
+}
+
+/* Custom styles for the dropdown arrow */
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  transform: translateY(-50%);
+  border-top: 2px solid #333;
+  border-right: 2px solid #333;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.select-wrapper select:focus + ::after {
+  transform: translateY(-50%) rotate(45deg);
+  border-color: #f00; /* Change color on focus if desired */
+}
