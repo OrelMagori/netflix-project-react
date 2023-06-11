@@ -27,42 +27,33 @@ form {
 
 
 
-
-.select-wrapper {
-  position: relative;
-}
-
-.select-wrapper select {
+/* Styling for the dropdown */
+select {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 0.5rem;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-.select-wrapper select::-ms-expand {
-  display: none;
-}
-
-/* Custom styles for the dropdown arrow */
-.select-wrapper::after {
-  content: "";
+/* Styling for the dropdown arrow */
+select::after {
+  content: "\25BE"; /* Unicode character for down arrow */
   position: absolute;
   top: 50%;
   right: 10px;
-  width: 8px;
-  height: 8px;
   transform: translateY(-50%);
-  border-top: 2px solid #333;
-  border-right: 2px solid #333;
-  transition: all 0.3s ease-in-out;
   pointer-events: none;
 }
 
-.select-wrapper select:focus + ::after {
-  transform: translateY(-50%) rotate(45deg);
-  border-color: #f00; /* Change color on focus if desired */
+/* Styling for the dropdown options */
+select option {
+  font-size: 1rem;
+}
+
+/* Styling for the dropdown when it's open */
+select:focus {
+  outline: none;
+  border-color: #007bff; /* Change the border color when focused */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Add a focus effect */
 }

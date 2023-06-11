@@ -12,55 +12,75 @@ export const Register = (props) => {
 
   const { apiCall } = useApiContext();
 
-  const [, setEmail_validation] = useState(true);
-  const [, setPassword_validation] = useState(true);
-  const [, setName_validation] = useState(true);
-
   useEffect(() => {
     setAge(ages);
   }, []);
 
-  const firstNameChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setName_validation(true);
-    }
-    setFirstName(event.target.value);
-  };
+  const validateForm = () => {
+    // Define regular expressions for validation
+    const nameRegex = /^[a-zA-Z]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const lastNameChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setName_validation(true);
-    }
-    setLastName(event.target.value);
-  };
+    let isValid = true;
 
-  const emailChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setEmail_validation(true);
+    // Validation for firstName
+    if (firstName.trim() === "" || !nameRegex.test(firstName)) {
+      isValid = false;
+      alert("Please enter a valid first name");
+      // Handle invalid firstName input
     }
-    setEmail(event.target.value);
-  };
 
-  const passwordChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setPassword_validation(true);
+    // Validation for lastName
+    if (lastName.trim() === "" || !nameRegex.test(lastName)) {
+      isValid = false;
+      alert("Please enter a valid last name");
+      // Handle invalid lastName input
     }
-    setPassword(event.target.value);
+
+    // Validation for email
+    if (email.trim() === "" || !emailRegex.test(email)) {
+      isValid = false;
+      alert("Please enter a valid email");
+      // Handle invalid email input
+    }
+
+    // Validation for password
+    if (password.trim() === "" || password.length < 6) {
+      isValid = false;
+      alert("Please enter a valid password");
+      // Handle invalid password input
+    }
+
+    // Validation for age
+    if (age === "" || age < 18) {
+      isValid = false;
+      alert("Please select an age");
+      // Handle invalid age input
+    }
+    return isValid;
   };
 
   const signup = async (event) => {
     event.preventDefault();
-    try {
-      const { status, data } = await apiCall("users/signup", "POST", {
-        email,
-        password,
-      });
-      console.log(status);
-      console.log(data);
-      const returnLoginScreen = () => props.onFormSwitch("login");
-      returnLoginScreen();
-    } catch (error) {
-      console.log(error);
+
+    if (validateForm()) {
+      try {
+        const { status, data } = await apiCall("users/signup", "POST", {
+          firstName,
+          lastName,
+          email,
+          password,
+          age,
+        });
+        console.log(status);
+        console.log(data);
+        const returnLoginScreen = () => props.onFormSwitch("login");
+        returnLoginScreen();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      // Handle form validation errors
     }
   };
 
@@ -72,33 +92,28 @@ export const Register = (props) => {
           type="text"
           placeholder="First Name"
           value={firstName}
-          onChange={firstNameChangeHandler}
+          onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={lastNameChangeHandler}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={emailChangeHandler}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={passwordChangeHandler}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <select
-          className="select-wrapper"
-          placeholder="Select Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        >
-          <option value disabled={true}></option>
+        <select value={age} onChange={(e) => setAge(e.target.value)}>
+          <option value="">Select Age</option>
           {ages.agesData.map((result) => (
             <option key={result.key} value={result.key}>
               {result.value}
@@ -106,6 +121,9 @@ export const Register = (props) => {
           ))}
         </select>
         <button type="submit">Register</button>
+        <button type="button" onClick={() => props.onFormSwitch("login")}>
+          Login
+        </button>
       </form>
     </div>
   );
