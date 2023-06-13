@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import "./Login.css";
+// import "./Main.css";
+import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import "./Login.css";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -27,6 +30,10 @@ export const Login = (props) => {
     setPassword(event.target.value);
   };
 
+  const handleRegisterButton = () => {
+    window.location.href = "/register";
+  };
+
   const login = async (event) => {
     event.preventDefault();
     try {
@@ -46,29 +53,35 @@ export const Login = (props) => {
 
   return (
     <div>
-      <h1>Unlimited movies, TV shows, and more</h1>
-      <h3>Watch anywhere. Cancel anytime.</h3>
-      <h5>
-        Ready to watch? Enter your email to create or restart your membership.
-      </h5>
-      <form onSubmit={(e) => login(e)}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={emailChangeHandler}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={passwordChangeHandler}
-        />
-        <button type="submit">Login</button>
-        <button type="button" onClick={() => props.onFormSwitch("register")}>
-          Register
-        </button>
-      </form>
+      <MainButton />
+      <div className="container">
+        <p className="largeSpan">Login</p>
+        <form onSubmit={(e) => login(e)}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={emailChangeHandler}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={passwordChangeHandler}
+          />
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account?{" "}
+            <span className="link" onClick={handleRegisterButton}>
+              Sign up now
+            </span>
+          </p>
+
+          {/* <button type="button" onClick={handleRegisterButton}>
+            Register
+          </button> */}
+        </form>
+      </div>
     </div>
   );
 };

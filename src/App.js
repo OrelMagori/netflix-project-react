@@ -1,22 +1,24 @@
+import React from "react";
 import "./App.css";
-import { Login } from "../src/client/pages/Login";
-import { Register } from "../src/client/pages/Register";
-import React, { useState } from "react";
+import { Main } from "../src/client/pages/Main";
+// import { Login } from "../src/client/pages/Login";
+// import { Register } from "../src/client/pages/Register";
 
 function App() {
-  const [currentForm, setCurrentForm] = useState("login");
+  // const [currentForm, setCurrentForm] = useState("login");
 
-  const toggleForm = (forName) => {
-    setCurrentForm(forName);
-  };
+  // const toggleForm = (forName) => {
+  //   setCurrentForm(forName);
+  // };
 
   return (
     <div className="App">
-      {currentForm === "login" ? (
+      <Main />
+      {/* {currentForm === "login" ? (
         <Login onFormSwitch={toggleForm} />
       ) : (
         <Register onFormSwitch={toggleForm} />
-      )}
+      )} */}
     </div>
   );
 }

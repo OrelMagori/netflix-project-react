@@ -1,0 +1,40 @@
+import React from "react";
+
+import "./Main.css";
+
+export const Main = (props) => {
+  const handleLoginButton = () => {
+    window.location.href = "/login";
+  };
+
+  const handleRegisterButton = () => {
+    window.location.href = "/register";
+  };
+
+  return (
+    <div>
+      <span class="netflix-text">Netflix</span>
+      <div className="container">
+        <p className="largeSpan">Unlimited movies, TV shows, and more</p>
+        <p className="mediumSpan">Watch anywhere. Cancel anytime.</p>
+        <p className="smallSpan">
+          Ready to watch? Enter your email to create or restart your membership.
+        </p>
+        <button
+          type="button"
+          onClick={handleRegisterButton}
+          style={{ marginRight: 10 }}
+        >
+          Register
+        </button>
+        <button
+          type="button"
+          onClick={handleLoginButton}
+          style={{ marginLeft: 10 }}
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  );
+};

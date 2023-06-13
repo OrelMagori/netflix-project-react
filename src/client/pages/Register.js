@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import "./Register.css";
 import ages from ".././database/ages.json";
+import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
 
 export const Register = (props) => {
@@ -60,6 +62,10 @@ export const Register = (props) => {
     return isValid;
   };
 
+  // const handleLoginButton = () => {
+  //   window.location.href = "/login";
+  // };
+
   const signup = async (event) => {
     event.preventDefault();
 
@@ -86,45 +92,54 @@ export const Register = (props) => {
 
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={(e) => signup(e)}>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <select value={age} onChange={(e) => setAge(e.target.value)}>
-          <option value="">Select Age</option>
-          {ages.agesData.map((result) => (
-            <option key={result.key} value={result.key}>
-              {result.value}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Register</button>
-        <button type="button" onClick={() => props.onFormSwitch("login")}>
-          Login
-        </button>
-      </form>
+      <MainButton />
+      <div className="container">
+        <p className="largeSpan">Create an Account</p>
+        <form onSubmit={(e) => signup(e)}>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <select value={age} onChange={(e) => setAge(e.target.value)}>
+            <option value="">Select Age</option>
+            {ages.agesData.map((result) => (
+              <option key={result.key} value={result.key}>
+                {result.value}
+              </option>
+            ))}
+          </select>
+          <button type="submit" class="register-btn">
+            <span className="btn-icon">
+              <i className="fas fa-user-plus"></i>
+            </span>
+            Register Now
+          </button>
+          {/* <button type="submit">Get Started</button> */}
+          {/* <button type="button" onClick={handleLoginButton}>
+            Login
+          </button> */}
+        </form>
+      </div>
     </div>
   );
 };

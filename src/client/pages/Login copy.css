@@ -5,18 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.loginPageDiv::before {
   content: "";
   background-image: url("../../../public/images/loginBackground.jpg");
   /* background-image: url("https://cdn.pixabay.com/photo/2016/11/01/18/38/background-1789175_960_720.png"); */
   background-size: cover;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
 }
 
 /* .app {
@@ -74,7 +67,7 @@ label {
 }
 
 small {
-  font-size: 10; 
+  font-size: 10;
 }
 
 button {
@@ -86,5 +79,5 @@ button {
   background-color: darkred;
   color: black;
   font-size: 15px;
-   font-weight: bold;
+  font-weight: bold;
 }
