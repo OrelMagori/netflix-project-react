@@ -3,6 +3,8 @@ import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import Navigator from "../components/Navigator";
+import Search from "../components/Search";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -89,68 +91,9 @@ export const Home = () => {
   // };
 
   return (
-    <div className="homePageDiv">
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-        <div className="border w-25 p-3 rounded">
-          <h2 className="m-2">{user?.name}'s items list</h2>
-
-          <div className="app">
-            <div className="form-group" style={{ textAlign: "left" }}>
-              <label htmlFor="exampleInputEmail1">Add item</label>{" "}
-              <input
-                type="text"
-                name="itemName"
-                id="inputItemName"
-                className="form-control"
-                placeholder="Enter a item"
-                // onChange={handleName}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <br />
-            </div>
-            <div className="form-group" style={{ textAlign: "left" }}>
-              <label htmlFor="exampleInputEmail1">Add price</label>
-              <input
-                type="number"
-                name="itemPrice"
-                id="inputItemPrice"
-                className="form-control"
-                placeholder="Enter a price"
-                // onChange={handlePrice}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-              <br />
-            </div>
-            <button
-              className="btn btn-outline-dark"
-              onClick={(e) => addItem(e)}
-            >
-              Submit
-            </button>
-            <button
-              id="logoutButton"
-              className="btn btn-outline-light"
-              onClick={logout}
-            >
-              Logout
-            </button>
-            <br />
-            <br />
-
-            {myList.map((item) => (
-              <div className="m-1" key={item}>
-                <button
-                  id="itemBtn"
-                  className="btn btn-outline-warning"
-                  onClick={(e) => deleteItem({ item }, e)}
-                >
-                  {item}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div>
+      <Navigator/>
+      <Search/>
     </div>
   );
 };

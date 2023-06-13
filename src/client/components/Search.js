@@ -1,109 +1,104 @@
-// import React,{useState} from 'react'
-// import axios from "axios"
-
-// export default function Search() {
-
-// const [searchText, setSearchText] = useState("");
-// const [moviesAndSeries, setMoviesAndSeries] = useState([]); 
-
-// const searchMoviesAndSeries = () => {
-//     console.log(searchText.length)
-//     if(searchText.length > 1) {
-//     axios
-//       .get("https://imdb-api.com/API/Search/k_3k6urw6m/" + searchText)
-//       .then((response) => {
-//         // handle success
-//         setMoviesAndSeries(response.results);
-//         console.log(moviesAndSeries)
-//       })
-//       .catch(function (error) {
-//         // handle error
-//         console.log(error);
-//       });
-//     }
-//     else {
-//       setMoviesAndSeries([]);
-//       window.alert("Search text must be at least 2 characters long");
-//     }
-//   };
-
-
-//   return (
-//     <div>
-//         <input onChange={(e) => setSearchText(e.target.value)} />
-//         <button onClick={searchMoviesAndSeries}>Search</button>
-//     </div>
-//   )
-// }
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FiSearch } from 'react-icons/fi';
+import { RingLoader } from 'react-spinners';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Search.css';
 
-export default function HomeScreen() {
+export default function Search() {
+  const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [moviesAndSeries, setMoviesAndSeries] = useState([]);
-  const [showSearchField, setShowSearchField] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
-  const handleSearchClick = () => {
-    setShowSearchField(false);
+  const handleSearchButtonClick = () => {
+    setIsSearching(!isSearching);
+    if (isSearching) {
+      searchMoviesAndSeries();
+    }
   };
 
-  const handleSearchTextChange = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    searchMoviesAndSeries();
+  const handleSearchInputKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      setIsSearching(false);
+      searchMoviesAndSeries();
+    }
   };
 
   const searchMoviesAndSeries = () => {
-    if (searchText.length < 2) {
-      setMoviesAndSeries([]);
-      window.alert('Search text must be at least 2 characters long');
-      return;
-    }
+    setIsLoading(true);
     axios
-      .get('https://imdb-api.com/API/Search/k_3k6urw6m/' + searchText)
+      .get(`https://imdb-api.com/API/Search/k_3k6urw6m/${searchText}`)
       .then((response) => {
+        // handle success
         setMoviesAndSeries(response.data.results);
+        console.log(moviesAndSeries);
+        setIsLoading(false);
       })
       .catch(function (error) {
+        // handle error
         console.log(error);
-        window.alert('An error occurred while searching.');
-        setMoviesAndSeries([]);
+        setIsLoading(false);
       });
   };
 
-  const handleContentClick = (content) => {
-    // Logic to save the selected content as favorite
-    console.log('Selected Content:', content);
+  const handleImageClick = (content) => {
+    // Check if the image is already in favorites
+    const isAlreadyAdded = favorites.some((fav) => fav.id === content.id);
+  
+    if (isAlreadyAdded) {
+      toast.error('Item already added to favorites');
+    } else {
+      setFavorites((prevFavorites) => [...prevFavorites, content]);
+      toast.success('Item added to favorites');
+    }
   };
+  
+
+  console.log(favorites);
 
   return (
     <div>
-      {showSearchField ? (
-        <form onSubmit={handleSearchSubmit}>
-          <input type="text" value={searchText} onChange={handleSearchTextChange} />
-          <button type="submit">Search</button>
-        </form>
-      ) : (
-        <button onClick={() => setShowSearchField(true)}>Open Search Field</button>
-      )}
-
-      {moviesAndSeries.length > 0 && (
-        <div>
-          <h3>Search Results:</h3>
-          <ul>
-            {moviesAndSeries.map((content) => (
-              <li key={content.id} onClick={() => handleContentClick(content)}>
-                {content.title}
-              </li>
-            ))}
-          </ul>
+      <div className="search-container">
+        {isSearching ? (
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyPress={handleSearchInputKeyPress}
+          />
+        ) : (
+          <button className="search-button" onClick={handleSearchButtonClick}>
+            {isSearching ? 'Hide' : <FiSearch />}
+          </button>
+        )}
+      </div>
+      {isLoading ? (
+        <div className="loading">
+          <RingLoader
+            className="spinner"
+            size={60}
+            color={'#123abc'}
+            loading={isLoading}
+          />
         </div>
-      )}
+      ) : moviesAndSeries.length > 0 ? (
+        <div className="image-container">
+          {moviesAndSeries.map((content) => (
+            <img
+              key={content.id}
+              src={content.image}
+              alt={content.title}
+              onClick={() => handleImageClick(content)}
+            />
+          ))}
+        </div>
+      ) : null}
+      <ToastContainer />
     </div>
   );
 }
-
