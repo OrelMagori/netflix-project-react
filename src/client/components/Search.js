@@ -43,14 +43,19 @@ export default function Search() {
 
   const handleImageClick = (content) => {
     const isAlreadyAdded = favorites.some((fav) => fav.id === content.id);
-
+  
     if (isAlreadyAdded) {
       toast.error('Item already added to favorites');
     } else {
-      setFavorites((prevFavorites) => [...prevFavorites, content]);
+      setFavorites((prevFavorites) => {
+        const updatedFavorites = [...prevFavorites, content];
+        console.log(updatedFavorites); // Print updated favorite array
+        return updatedFavorites;
+      });
       toast.success('Item added to favorites');
     }
   };
+  
 
   return (
     <div>
