@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
-// import "./Main.css";
 import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -76,10 +75,6 @@ export const Login = (props) => {
               Sign up now
             </span>
           </p>
-
-          {/* <button type="button" onClick={handleRegisterButton}>
-            Register
-          </button> */}
         </form>
       </div>
     </div>

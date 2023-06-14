@@ -13,7 +13,7 @@ export const Main = (props) => {
 
   return (
     <div>
-      <span class="netflix-text">Netflix</span>
+      <span className="netflix-text">Netflix</span>
       <div className="mainContainer">
         <p className="largeSpan">Unlimited movies, TV shows, and more</p>
         <p className="mediumSpan">Watch anywhere. Cancel anytime.</p>

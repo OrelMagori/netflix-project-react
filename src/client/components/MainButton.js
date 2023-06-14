@@ -9,7 +9,7 @@ export const MainButton = () => {
 
   return (
     <div>
-      <span class="netflix-text" onClick={handleMainButton}>
+      <span className="netflix-text" onClick={handleMainButton}>
         Netflix
       </span>
     </div>

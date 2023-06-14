@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./Register.css";
 import ages from ".././database/ages.json";
@@ -13,80 +14,33 @@ export const Register = (props) => {
   const [age, setAge] = useState("");
 
   const { apiCall } = useApiContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setAge(ages);
   }, []);
 
-  const validateForm = () => {
-    // Define regular expressions for validation
-    const nameRegex = /^[a-zA-Z]+$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    let isValid = true;
-
-    // Validation for firstName
-    if (firstName.trim() === "" || !nameRegex.test(firstName)) {
-      isValid = false;
-      alert("Please enter a valid first name");
-      // Handle invalid firstName input
-    }
-
-    // Validation for lastName
-    if (lastName.trim() === "" || !nameRegex.test(lastName)) {
-      isValid = false;
-      alert("Please enter a valid last name");
-      // Handle invalid lastName input
-    }
-
-    // Validation for email
-    if (email.trim() === "" || !emailRegex.test(email)) {
-      isValid = false;
-      alert("Please enter a valid email");
-      // Handle invalid email input
-    }
-
-    // Validation for password
-    if (password.trim() === "" || password.length < 6) {
-      isValid = false;
-      alert("Please enter a valid password");
-      // Handle invalid password input
-    }
-
-    // Validation for age
-    if (age === "" || age < 18) {
-      isValid = false;
-      alert("Please select an age");
-      // Handle invalid age input
-    }
-    return isValid;
-  };
-
-  // const handleLoginButton = () => {
-  //   window.location.href = "/login";
-  // };
-
   const signup = async (event) => {
     event.preventDefault();
-
-    if (validateForm()) {
-      try {
-        const { status, data } = await apiCall("users/signup", "POST", {
-          firstName,
-          lastName,
-          email,
-          password,
-          age,
-        });
-        console.log(status);
-        console.log(data);
-        const returnLoginScreen = () => props.onFormSwitch("login");
-        returnLoginScreen();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      // Handle form validation errors
+    console.log(firstName, lastName, email, password, age);
+    try {
+      const { status, data } = await apiCall("users/signup", "POST", {
+        firstName,
+        lastName,
+        email,
+        password,
+        age,
+      });
+      console.log(status);
+      console.log(data);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      setAge("");
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -128,16 +82,12 @@ export const Register = (props) => {
               </option>
             ))}
           </select>
-          <button type="submit" class="register-btn">
+          <button type="submit" className="register-btn">
             <span className="btn-icon">
-              <i className="fas fa-user-plus"></i>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              Get Started
             </span>
-            Register Now
           </button>
-          {/* <button type="submit">Get Started</button> */}
-          {/* <button type="button" onClick={handleLoginButton}>
-            Login
-          </button> */}
         </form>
       </div>
     </div>

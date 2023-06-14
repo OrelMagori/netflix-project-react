@@ -1,8 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
 import "./Navigator.css";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Navigator() {
+  const { dispatch } = useAuthContext();
+
+  const logout = () => {
+    dispatch({ type: "LOGOUT", payload: null });
+  };
+
   return (
     <nav className="navbar">
       <ul className="navbar-list">
@@ -21,9 +29,9 @@ export default function Navigator() {
             Favorite
           </Link>
         </li>
-        <li className="navbar-item">
-          <Link to="/" className="navbar-link">
-            Logout
+        <li className="navbar-item navbar-item-logout">
+          <Link to="/" className="navbar-link" onClick={logout}>
+            <FiLogOut className="logout-icon" />
           </Link>
         </li>
       </ul>
