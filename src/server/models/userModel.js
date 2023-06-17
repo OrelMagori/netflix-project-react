@@ -9,13 +9,15 @@ const userSchema = new Schema(
       required: true,
     },
     lastName: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
       type: String,
-      required: true,
+      require: true,
+      index: true,
       unique: true,
+      sparse: true,
     },
     password: {
       type: String,
@@ -47,33 +49,51 @@ userSchema.statics.login = async function (email, password) {
   }
   return user;
 };
-userSchema.statics.signup = async function (firstName,lastName, email, age) {
-  if (!firstName || !lastName || !email || !age) {
+userSchema.statics.signup = async function (
+  firstName,
+  lastName,
+  email,
+  password,
+  age
+) {
+  if (!firstName || !lastName || !email || !password || !age) {
     throw Error("All fields must be filled");
   }
-  if(age < 18){
+  if (age < 18) {
     throw Error("You must be 18 or older to register");
   }
-  if(!email.includes("@") || !email.includes(".")){
+  if (!email.includes("@") || !email.includes(".")) {
     throw Error("Invalid email");
   }
-  if(firstName.length < 2 || lastName.length < 2){
+  if (firstName.length < 2 || lastName.length < 2) {
     throw Error("First and last name must be at least 2 characters long");
   }
   if (password.length < 6) {
     throw Error("Password must be at least 6 characters long");
   }
-  if(!password.match(/[0-9]/g) || !password.match(/[a-z]/g) || !password.match(/[A-Z]/g)){
-    throw Error("Password must contain at least one uppercase letter, one lowercase letter, and one number");
-  }
-  
+  // if (
+  //   !password.match(/[0-9]/g) ||
+  //   !password.match(/[a-z]/g) ||
+  //   !password.match(/[A-Z]/g)
+  // ) {
+  //   throw Error(
+  //     "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+  //   );
+  // }
+
   const exists = await this.findOne({ email });
   if (exists) {
     throw Error("Email already in use");
   }
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
-  const user = await this.create({ firstName,lastName, email, age, password: hash });
+  const user = await this.create({
+    firstName,
+    lastName,
+    email,
+    password: hash,
+    age,
+  });
 
   return user;
 };

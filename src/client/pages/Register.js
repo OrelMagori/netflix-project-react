@@ -1,143 +1,92 @@
-import React, { useState } from "react";
-import { useApiContext } from "../hooks/useApiContext";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Register.css";
+import ages from ".././database/ages.json";
+import { MainButton } from "../components/MainButton";
+import { useApiContext } from "../hooks/useApiContext";
 
 export const Register = (props) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
+  const [age, setAge] = useState("");
 
   const { apiCall } = useApiContext();
+  const navigate = useNavigate();
 
-  const [email_validation, setEmail_validation] = useState(true);
-  const [password_validation, setPassword_validation] = useState(true);
-  const [name_validation, setName_validation] = useState(true);
-  const [ID_validation, setID_validation] = useState(true);
-
-  const nameChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setName_validation(true);
-    }
-    setName(event.target.value);
-  };
-
-  const emailChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setEmail_validation(true);
-    }
-    setEmail(event.target.value);
-  };
-
-  const passwordChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setPassword_validation(true);
-    }
-    setPassword(event.target.value);
-  };
-
-  const idChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setID_validation(true);
-    }
-    setId(event.target.value);
-  };
+  useEffect(() => {
+    setAge(ages);
+  }, []);
 
   const signup = async (event) => {
     event.preventDefault();
+    console.log(firstName, lastName, email, password, age);
     try {
       const { status, data } = await apiCall("users/signup", "POST", {
+        firstName,
+        lastName,
         email,
         password,
-        name,
-        id,
+        age,
       });
       console.log(status);
       console.log(data);
-      const returnLoginScreen = () => props.onFormSwitch("login");
-      returnLoginScreen();
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      setAge("");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="registerPageDiv">
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form className="border p-3 rounded" onSubmit={(e) => signup(e)}>
-          <h2 className="m-2">Register</h2>
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="fullName">Full name</label>
-            <input
-              value={name}
-              onChange={nameChangeHandler}
-              name="name"
-              id="name"
-              placeholder="Israel Israeli"
-              type="text"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="exampleInputEmail">Email address</label>
-            <input
-              value={email}
-              onChange={emailChangeHandler}
-              type="email"
-              placeholder="example@gmail.com"
-              id="email"
-              name="email"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="idField">ID</label>
-            <input
-              value={id}
-              onChange={idChangeHandler}
-              type="number"
-              name="id"
-              id="id"
-              placeholder="Your ID"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-          </div>
-          <br />
-          <div className="form-group" style={{ textAlign: "left" }}>
-            <label htmlFor="passwordField">Password</label>
-            <input
-              value={password}
-              onChange={passwordChangeHandler}
-              type="password"
-              placeholder="*********"
-              id="password"
-              name="password"
-              className="form-control"
-              aria-label="email"
-              aria-describedby="basic-addon1"
-            />
-            <small>We'll never share your password with anyone else.</small>
-            <br />
-            <br />
-          </div>
-          <button type="submit" className="btn btn-outline-dark">
-            Register
-          </button>
-          <br />
-          <br />
-          <button
-            className="btn btn-outline-light"
-            onClick={() => props.onFormSwitch("login")}
-          >
-            Already have an account? Login here
+    <div>
+      <MainButton />
+      <div className="container">
+        <p className="largeSpan">Create an Account</p>
+        <form onSubmit={(e) => signup(e)}>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <select value={age} onChange={(e) => setAge(e.target.value)}>
+            <option value="">Select Age</option>
+            {ages.agesData.map((result) => (
+              <option key={result.key} value={result.key}>
+                {result.value}
+              </option>
+            ))}
+          </select>
+          <button type="submit" className="register-btn">
+            <span className="btn-icon">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              Get Started
+            </span>
           </button>
         </form>
       </div>

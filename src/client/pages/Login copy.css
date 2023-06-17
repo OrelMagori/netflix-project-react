@@ -1,0 +1,83 @@
+.loginPageDiv {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "";
+  background-image: url("../../../public/images/loginBackground.jpg");
+  /* background-image: url("https://cdn.pixabay.com/photo/2016/11/01/18/38/background-1789175_960_720.png"); */
+  background-size: cover;
+  position: absolute;
+}
+
+/* .app {
+  position: relative;
+  text-align: center;
+  color: black;
+} */
+
+h2 {
+  position: relative;
+  font-size: 50px;
+  color: white;
+  text-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 500px;
+  background-color: black;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  opacity: 0.6;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  height: 100px;
+  color: white;
+}
+
+input {
+  position: relative;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #e6e6e6;
+  color: black;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+label {
+  font-size: 20px;
+  margin-left: 0%;
+}
+
+small {
+  font-size: 10;
+}
+
+button {
+  position: relative;
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: darkred;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}

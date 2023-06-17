@@ -1,13 +1,12 @@
 import React from "react";
-import "./Home.css";
-import Navigator from "../components/Navigator";
-import Search from "../components/Search";
 
-export const Home = () => {
+import Navigator from "../components/Navigator";
+
+export const Favorite = () => {
   return (
     <div>
       <Navigator />
-      <Search />
+      Favorite
     </div>
   );
 };

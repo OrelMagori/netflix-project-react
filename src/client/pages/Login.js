@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import "./Login.css";
+import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import "./Login.css";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -27,6 +29,10 @@ export const Login = (props) => {
     setPassword(event.target.value);
   };
 
+  const handleRegisterButton = () => {
+    window.location.href = "/register";
+  };
+
   const login = async (event) => {
     event.preventDefault();
     try {
@@ -45,50 +51,32 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="loginPageDiv">
-      <form onSubmit={(e) => login(e)}>
-        <h2>Login</h2>
-
-        <div className="form-group">
-          <label>Email address</label>
+    <div>
+      <MainButton />
+      <div className="container">
+        <p className="largeSpan">Login</p>
+        <form onSubmit={(e) => login(e)}>
           <input
+            type="email"
+            placeholder="Email"
             value={email}
             onChange={emailChangeHandler}
-            type="email"
-            placeholder="example@gmail.com"
-            id="email"
-            name="email"
-            aria-label="email"
           />
-        </div>
-        <br />
-        <div className="form-group">
-          <label>Password</label>
           <input
+            type="password"
+            placeholder="Password"
             value={password}
             onChange={passwordChangeHandler}
-            type="password"
-            placeholder="*********"
-            id="password"
-            name="password"
-            aria-label="email"
           />
-          <small>We'll never share your password with anyone else.</small>
-          <br />
-          <br />
-        </div>
-        <button type="submit">
-          Log In
-        </button>
-        <br />
-        <br />
-        <button
-          type="button"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Don't have an account? Register here
-        </button>
-      </form>
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account?{" "}
+            <span className="link" onClick={handleRegisterButton}>
+              Sign up now
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };
