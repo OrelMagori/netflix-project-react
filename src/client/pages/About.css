@@ -1,0 +1,28 @@
+.about-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.about-section {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.footer {
+  background-color: #141414;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 21px;
+  text-align: justify;
+  text-justify: inter-word;
+}

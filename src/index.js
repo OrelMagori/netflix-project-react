@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.css";
 import App from "./App";
-import Search from "./client/components/Search";
+// import Search from "./client/components/Search";
 import { Main } from "../src/client/pages/Main";
 import { Home } from "../src/client/pages/Home";
 import { Login } from "../src/client/pages/Login";
@@ -27,7 +27,7 @@ root.render(
             <Route path="home" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
-            <Route path="search" element={<Search />} />
+            {/* <Route path="search" element={<Search />} /> */}
             <Route path="register" element={<Register />} />
             <Route path="favorite" element={<Favorite />} />
           </Routes>

@@ -1,37 +1,91 @@
-   .navbar {
-    background-color: #141414;
-    padding: 10px;
+.navbar {
+  background-color: #141414;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.navbar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.navbar-item-logout {
+  margin-left: auto;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #e50914;
+}
+
+.navbar-link.active {
+  color: #e50914;
+}
+
+.logout-icon {
+  font-size: 25px;
+  display: flex;
+  margin-top: 50%;
+}
+
+.netflix-button {
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #e50914;
+  letter-spacing: -2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  float: right;
+}
+.netflix-button:hover {
+  color: #fff;
+}
+
+.navbar-item-search {
+  display: flex;
+  align-items: center;
+  position: absolute; /* Add this line */
+  top: 100%; /* Add this line */
+  left: 50%; /* Add this line */
+  transform: translateX(-50%); /* Add this line */
+}
+
+.navbar-search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
   }
-  
-  .navbar-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center; 
-  }
-  
-  .navbar-item {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  
-  .navbar-item-logout {
-    margin-left: auto;
-  }
-  
-  .navbar-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-link:hover {
-    color: #e50914;
-  }
-  
-  .logout-icon {
-    font-size: 18px;
-  }
-  
+}

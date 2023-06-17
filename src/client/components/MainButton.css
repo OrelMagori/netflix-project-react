@@ -1,11 +1,12 @@
 .netflix-text {
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 48px;
-  font-weight: 800;
+  font-weight: bolder;
   color: #e50914;
   text-transform: uppercase;
   letter-spacing: -2px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   margin-left: 10%;
   cursor: pointer;
+  display: flex;
 }

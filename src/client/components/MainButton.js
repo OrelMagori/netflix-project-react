@@ -4,13 +4,13 @@ import "./MainButton.css";
 export const MainButton = () => {
 
   const handleMainButton = () => {
-    window.location.href = "/main";
+    window.location.href = "/";
   };
 
   return (
     <div>
       <span className="netflix-text" onClick={handleMainButton}>
-        Netflix
+        netflix
       </span>
     </div>
   );

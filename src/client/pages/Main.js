@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./Main.css";
+import { MainButton } from "../components/MainButton";
 
 export const Main = (props) => {
   const handleLoginButton = () => {
@@ -13,7 +14,7 @@ export const Main = (props) => {
 
   return (
     <div>
-      <span className="netflix-text">Netflix</span>
+      <MainButton />
       <div className="mainContainer">
         <p className="largeSpan">Unlimited movies, TV shows, and more</p>
         <p className="mediumSpan">Watch anywhere. Cancel anytime.</p>
