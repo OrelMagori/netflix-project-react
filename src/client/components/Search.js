@@ -7,18 +7,22 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Search.css";
 
 export default function Search() {
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch, toggleSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [moviesAndSeries, setMoviesAndSeries] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
   const handleSearchButtonClick = () => {
-    setShowSearch(true);
+    toggleSearch(!showSearch);
+    if (showSearch) {
+      searchMoviesAndSeries();
+    }
   };
 
   const handleSearchInputKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
+      toggleSearch(false);
       searchMoviesAndSeries();
     }
   };
@@ -43,7 +47,7 @@ export default function Search() {
     if (isAlreadyAdded) {
       toast.error("Item already added to favorites");
     } else {
-      setFavorites((prevFavorites) => {
+        setFavorites((prevFavorites) => {
         const updatedFavorites = [...prevFavorites, content];
         console.log(updatedFavorites); // Print updated favorite array
         return updatedFavorites;
@@ -53,18 +57,9 @@ export default function Search() {
   };
 
   return (
+    <>
     <div className="search-container">
-      {!showSearch && (
-        <button
-          className="search-button"
-          onClick={handleSearchButtonClick}
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
-        >
-          <FiSearch style={{ size: 25, color: "white" }} />
-        </button>
-      )}
-
-      {showSearch && (
+      {showSearch ? (
         <input
           type="text"
           className="search-input"
@@ -73,8 +68,16 @@ export default function Search() {
           onChange={(e) => setSearchText(e.target.value)}
           onKeyPress={handleSearchInputKeyPress}
         />
-      )}
+      ) : null}
 
+        <button
+          className="search-button"
+          onClick={handleSearchButtonClick}
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+        >
+          <FiSearch style={{ size: 25, color: "white" }} className="search-icon"/>
+        </button>
+        </div>
       <div>
         {isLoading ? (
           <div className="loading">
@@ -99,6 +102,6 @@ export default function Search() {
         ) : null}
       </div>
       <ToastContainer />
-    </div>
+    </>
   );
 }
