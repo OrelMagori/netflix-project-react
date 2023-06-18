@@ -1,8 +1,25 @@
 import React from "react";
-import { FiLinkedin, FiGithub } from "react-icons/fi";
+import { FiLinkedin, FiGithub, FiMail } from "react-icons/fi";
 import "./Footer.css";
 
 const Footer = () => {
+  const orelEmail = "orelmagori@gmail.com";
+  const idanEmail = "idanyaron05@gmail.com";
+
+  const handleEmailClick = (location) => {
+    let email;
+
+    if (location === "footer-left") {
+      email = idanEmail;
+    } else if (location === "footer-right") {
+      email = orelEmail;
+    }
+
+    if (email) {
+      window.location.href = `mailto:${email}`;
+    }
+  };
+
   return (
     <footer className="footer">
       <span className="footer-top">Follow us for more projects</span>
@@ -25,6 +42,9 @@ const Footer = () => {
               >
                 <FiGithub className="footer-icon" />
               </a>
+              <span onClick={() => handleEmailClick("footer-left")}>
+                <FiMail className="footer-icon" />
+              </span>
             </div>
           </div>
         </div>
@@ -46,6 +66,9 @@ const Footer = () => {
               >
                 <FiGithub className="footer-icon" />
               </a>
+              <span onClick={() => handleEmailClick("footer-right")}>
+                <FiMail className="footer-icon" />
+              </span>
             </div>
           </div>
         </div>

@@ -27,6 +27,7 @@
   height: 20px;
   margin: 5px;
   color: #fff;
+  cursor: pointer;
 }
 
 .footer-social .footer-icon:hover {
