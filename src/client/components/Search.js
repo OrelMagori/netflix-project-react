@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiSearch } from "react-icons/fi";
 import { RingLoader } from "react-spinners";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Search.css";
+import { useApiContext } from "../hooks/useApiContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Search() {
   const [showSearch, toggleSearch] = useState(false);
@@ -12,6 +14,24 @@ export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [moviesAndSeries, setMoviesAndSeries] = useState([]);
   const [favorites, setFavorites] = useState([]);
+
+  const { apiCall } = useApiContext();
+  const { user } = useAuthContext();
+  const fetch = require('node-fetch');
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        let api = `favorites?userId=${user?._id}`;
+        const { data } = await apiCall(api);
+        console.log(data)
+        setFavorites(data.favoritesArray);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFavorites();
+  }, []);
 
   const handleSearchButtonClick = () => {
     toggleSearch(!showSearch);
@@ -28,17 +48,6 @@ export default function Search() {
   };
 
   const searchMoviesAndSeries = () => {
-    // setIsLoading(true);
-    // axios
-    //   .get(`https://imdb-api.com/API/SearchSeries/k_3k6urw6m/${searchText}`)
-    //   .then((response) => {
-    //     setMoviesAndSeries(response.data.results);
-    //     setIsLoading(false);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //     setIsLoading(false);
-    //   });
     setIsLoading(true);
     axios
       .get(`https://api.themoviedb.org/3/search/multi?api_key=76b2e1dade8134109dd065e6ad8ad30a&query=${searchText}`)
@@ -53,37 +62,67 @@ export default function Search() {
       });
   };
 
-// GET MOVIE CREDITS
-//   const fetch = require('node-fetch');
+const handleImageClick = async (content) => {
+  let cast = [];
+  let crew = [];
+  const isAlreadyAdded = favorites.some((fav) => fav.id == content.id);
 
-//   const url = `https://api.themoviedb.org/3/movie/${fav.id}/credits`;
-//   const options = {
-//   method: 'GET',
-//   headers: {
-//      accept: 'application/json',
-//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmIyZTFkYWRlODEzNDEwOWRkMDY1ZTZhZDhhZDMwYSIsInN1YiI6IjY0OGZlZjUyNTU5ZDIyMDBmZjExY2MxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EYn7IRsPq0tmYsejv-hWBZp4EcLTiP9ST7GakhwRdiY'
-// }
-// };
+  const url = `https://api.themoviedb.org/3/movie/${content.id}/credits`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmIyZTFkYWRlODEzNDEwOWRkMDY1ZTZhZDhhZDMwYSIsInN1YiI6IjY0OGZlZjUyNTU5ZDIyMDBmZjExY2MxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EYn7IRsPq0tmYsejv-hWBZp4EcLTiP9ST7GakhwRdiY',
+    },
+  };
 
-// fetch(url, options)
-// .then(res => res.json())
-// .then(json => console.log(json))
-// .catch(err => console.error('error:' + err));
-
-  const handleImageClick = (content) => {
-    const isAlreadyAdded = favorites.some((fav) => fav.id === content.id);
+  try {
+    const res = await fetch(url, options);
+    const json = await res.json();
+    console.log(json)
+    cast = json?.cast;
+    crew = json?.crew;
+    content.cast = cast;
+    content.crew = crew;
+    console.log(content);
 
     if (isAlreadyAdded) {
-      toast.error("Item already added to favorites");
+      toast.error('Item already added to favorites');
     } else {
-        setFavorites((prevFavorites) => {
+      setFavorites((prevFavorites) => {
         const updatedFavorites = [...prevFavorites, content];
         console.log(updatedFavorites); // Print updated favorite array
         return updatedFavorites;
       });
-      toast.success("Item added to favorites");
+
+      try {
+        console.log(content.crew);
+        const directors = content?.crew?.filter((x) => x.department === 'Directing');
+        const actors = content?.cast?.filter(
+          (x) => x.known_for_department === 'Acting'
+        );
+        const { status, data } = await apiCall('favorites/add', 'POST', {
+          synopsis: content.overview,
+          director: directors?.map((director) => director.name),
+          actors: actors?.map((actor) => actor.name),
+          country: content.original_language,
+          date: content.release_date,
+          id: content.id,
+          user: user,
+        });
+        console.log(status);
+        console.log(data);
+        toast.success('Item added to favorites');
+      } catch (error) {
+        console.log(error);
+      }
     }
-  };
+  } catch (err) {
+    console.error('Error:', err);
+  }
+};
+
 
   return (
     <>

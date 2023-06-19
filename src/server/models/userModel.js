@@ -27,9 +27,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // items: {
-    //   type: [{ type: Schema.Types.ObjectId, ref: "Item" }],
-    // },
+    favorites: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
+    },
   },
   { timestamps: true }
 );
@@ -54,7 +54,8 @@ userSchema.statics.signup = async function (
   lastName,
   email,
   password,
-  age
+  age,
+  favorites
 ) {
   if (!firstName || !lastName || !email || !password || !age) {
     throw Error("All fields must be filled");
@@ -93,6 +94,7 @@ userSchema.statics.signup = async function (
     email,
     password: hash,
     age,
+    favorites
   });
 
   return user;

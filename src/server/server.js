@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 //routes
 const userRouter = require("./routes/users"); // login + register
+const favoriteRouter = require("./routes/favorites"); // favorites
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/api/users", userRouter);
+app.use("/api/favorites", favoriteRouter);
 
 // listen for requests
 mongoose
