@@ -28,11 +28,23 @@ export default function Search() {
   };
 
   const searchMoviesAndSeries = () => {
+    // setIsLoading(true);
+    // axios
+    //   .get(`https://imdb-api.com/API/SearchSeries/k_3k6urw6m/${searchText}`)
+    //   .then((response) => {
+    //     setMoviesAndSeries(response.data.results);
+    //     setIsLoading(false);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //     setIsLoading(false);
+    //   });
     setIsLoading(true);
     axios
-      .get(`https://imdb-api.com/API/Search/k_3k6urw6m/${searchText}`)
+      .get(`https://api.themoviedb.org/3/search/multi?api_key=76b2e1dade8134109dd065e6ad8ad30a&query=${searchText}`)
       .then((response) => {
-        setMoviesAndSeries(response.data.results);
+        const filteredResults = response.data.results.filter(result => result.media_type === 'movie' || result.media_type === 'tv');
+        setMoviesAndSeries(filteredResults);
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -40,6 +52,23 @@ export default function Search() {
         setIsLoading(false);
       });
   };
+
+// GET MOVIE CREDITS
+//   const fetch = require('node-fetch');
+
+//   const url = `https://api.themoviedb.org/3/movie/${fav.id}/credits`;
+//   const options = {
+//   method: 'GET',
+//   headers: {
+//      accept: 'application/json',
+//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmIyZTFkYWRlODEzNDEwOWRkMDY1ZTZhZDhhZDMwYSIsInN1YiI6IjY0OGZlZjUyNTU5ZDIyMDBmZjExY2MxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EYn7IRsPq0tmYsejv-hWBZp4EcLTiP9ST7GakhwRdiY'
+// }
+// };
+
+// fetch(url, options)
+// .then(res => res.json())
+// .then(json => console.log(json))
+// .catch(err => console.error('error:' + err));
 
   const handleImageClick = (content) => {
     const isAlreadyAdded = favorites.some((fav) => fav.id === content.id);
@@ -93,7 +122,7 @@ export default function Search() {
             {moviesAndSeries.map((content) => (
               <img
                 key={content.id}
-                src={content.image}
+                src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
                 alt={content.title}
                 onClick={() => handleImageClick(content)}
               />
