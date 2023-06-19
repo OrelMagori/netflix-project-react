@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Search.css";
 import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import iosData from "../database/ios.json";
 
 export default function Search() {
   const [showSearch, toggleSearch] = useState(false);
@@ -32,6 +33,18 @@ export default function Search() {
     };
     fetchFavorites();
   }, []);
+
+  const getCountryFromLanguageCode = (languageCode) => {
+    const language = iosData[languageCode];
+    if (language) {
+      const countries = language.countries;
+      if (countries && countries.length > 0) {
+        return countries[0];
+      }
+    }
+    return '';
+  };
+  
 
   const handleSearchButtonClick = () => {
     toggleSearch(!showSearch);
@@ -102,11 +115,12 @@ const handleImageClick = async (content) => {
         const actors = content?.cast?.filter(
           (x) => x.known_for_department === 'Acting'
         );
+        const country = getCountryFromLanguageCode(content.original_language);
         const { status, data } = await apiCall('favorites/add', 'POST', {
           synopsis: content.overview,
           director: directors?.map((director) => director.name),
           actors: actors?.map((actor) => actor.name),
-          country: content.original_language,
+          country: country,
           date: content.release_date,
           id: content.id,
           user: user,
