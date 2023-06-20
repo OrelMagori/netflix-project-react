@@ -8,6 +8,7 @@ import "./Search.css";
 import { useApiContext } from "../hooks/useApiContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import iosData from "../database/ios.json";
+import dev from "./dev.json";
 
 export default function Search() {
   const [showSearch, toggleSearch] = useState(false);
@@ -19,6 +20,10 @@ export default function Search() {
   const { apiCall } = useApiContext();
   const { user } = useAuthContext();
   const fetch = require('node-fetch');
+
+  const apiKey = dev.apiKey;
+  const authToken = dev.authToken;
+
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -63,7 +68,7 @@ export default function Search() {
   const searchMoviesAndSeries = () => {
     setIsLoading(true);
     axios
-      .get(`https://api.themoviedb.org/3/search/multi?api_key=76b2e1dade8134109dd065e6ad8ad30a&query=${searchText}`)
+      .get(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${searchText}`)
       .then((response) => {
         const filteredResults = response.data.results.filter(result => result.media_type === 'movie' || result.media_type === 'tv');
         setMoviesAndSeries(filteredResults);
@@ -86,7 +91,7 @@ const handleImageClick = async (content) => {
     headers: {
       accept: 'application/json',
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NmIyZTFkYWRlODEzNDEwOWRkMDY1ZTZhZDhhZDMwYSIsInN1YiI6IjY0OGZlZjUyNTU5ZDIyMDBmZjExY2MxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EYn7IRsPq0tmYsejv-hWBZp4EcLTiP9ST7GakhwRdiY',
+      `Bearer ${authToken}`,
     },
   };
 
