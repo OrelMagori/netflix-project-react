@@ -20,6 +20,9 @@ const getAllFavorites = async (req, res) => {
     country: favorite.country,
     date: favorite.date,
     id: favorite.id,
+    type: favorite.type,
+    name: favorite.name,
+    image: favorite.image
   };
 });
 console.log(favoritesArray)
@@ -49,11 +52,11 @@ const deleteFavorite = async (req, res) => {
     }
 
     const addFavorite = async (req, res) => {
-        const { synopsis, director, actors, country, date, id } = req.body;
+        const { synopsis, director, actors, country, date, id, type, name, image } = req.body;
         const { user } = req.body;
         try {
             
-            const favorite = await Favorite.create({ synopsis, director, actors, country, date, id });
+            const favorite = await Favorite.create({ synopsis, director, actors, country, date, id, type, name,image });
             console.log(favorite);
             const foundUser = await User.findById(user);
             console.log(foundUser);

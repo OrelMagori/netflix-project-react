@@ -129,6 +129,9 @@ const handleImageClick = async (content) => {
           date: content.release_date,
           id: content.id,
           user: user,
+          type: content.media_type,
+          name: content.title || content.name,
+          image: `https://image.tmdb.org/t/p/w500${content.poster_path}`,
         });
         console.log(status);
         console.log(data);

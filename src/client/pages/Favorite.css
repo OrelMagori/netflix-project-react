@@ -1,0 +1,45 @@
+.movie-container,
+.series-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.movie-container > div,
+.series-container > div {
+  cursor: pointer;
+  text-align: center;
+}
+
+.movies-container img,
+.series-container img {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.movies-container p,
+.series-container p {
+    width: 200px; /* Match the width of the image */
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;  
+}
+
+.movies-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling if there are more movies than can fit in the container */
+    margin-bottom: 20px; /* Add margin at the bottom */
+  }
+  
+  .movie-item {
+    flex: 0 0 auto; /* Prevent movies from shrinking or growing */
+  }
+  
+  .movie-item:last-child {
+    margin-right: 0; /* Remove margin for the last movie item */
+  }
+  

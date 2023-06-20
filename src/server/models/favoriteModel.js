@@ -21,6 +21,15 @@ const favoriteSchema = new Schema(
     id: {
         type: String,
         required: true,
+    },
+    type: {
+        type: String,
+    },
+    name: {
+      type: String,
+    },
+    image: {
+      type: String,
     }
   },
   { timestamps: true }
