@@ -19,7 +19,7 @@ const favoriteSchema = new Schema(
       type: String,
     },
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     type: {

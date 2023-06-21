@@ -1,5 +1,6 @@
 const Favorite = require("../models/favoriteModel");
 const User = require("../models/userModel");
+const { Types } = require('mongoose');
 
 const getAllFavorites = async (req, res) => {
     console.log(req);
@@ -33,18 +34,22 @@ console.log(favoritesArray)
     }
 
 const deleteFavorite = async (req, res) => {
-    const { id } = req.params;
-    const { user } = req.body;
+  const { user, id } = req.body;
     try {
-        const favorite = await Favorite.findByIdAndDelete(id);
-        console.log(favorite)
+        // const favorite = await Favorite.findByIdAndDelete(id);
+        // console.log(favorite)
 
         const foundUser = await User.findById(user).populate('favorites');
-        foundUser.favorites = foundUser.favorites.filter(x => x.id!==id)
-        console.log(foundUser.favorites)
-        await foundUser.save();
+        const favoriteId = await Favorite.findOne({id:id});
+        console.log("first")
+        console.log(favoriteId)
+        const filteredFavorites = foundUser.favorites.filter((favorite) => favorite.id !== favoriteId.id);
+        console.log("second")
+        console.log(filteredFavorites)
 
-        res.status(200).json({ messg: "favorite deleted successfuly", favorite });
+        foundUser.favorites = filteredFavorites;
+        await foundUser.save();
+        res.status(200).json({ messg: "favorite deleted successfuly", favoriteId });
 
     } catch (error) {
         res.status(400).json({ error: error.message });
