@@ -1,8 +1,8 @@
 import React from "react";
 
-import "../pages/About.css";
-import Navigator from "../components/Navigator";
+import "./About.css";
 import Footer from "../components/Footer";
+import Navigator from "../components/Navigator";
 
 export const About = () => {
   return (
@@ -57,7 +57,6 @@ export const About = () => {
         </main>
       </div>
       <Footer />
-      {/* <footer class="footer">Footer content here</footer> */}
     </div>
   );
 };

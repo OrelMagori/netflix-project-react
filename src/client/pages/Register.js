@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Register.css";
-import ages from ".././database/ages.json";
+import ages from "../database/ages.json";
 import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
 
@@ -83,10 +83,7 @@ export const Register = (props) => {
             ))}
           </select>
           <button type="submit" className="register-btn">
-            <span className="btn-icon">
-              <i class="fa fa-user-plus" aria-hidden="true"></i>
-              Get Started
-            </span>
+            <span className="btn-icon">Get Started</span>
           </button>
         </form>
       </div>

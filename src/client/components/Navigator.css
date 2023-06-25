@@ -62,14 +62,14 @@
   color: #fff;
 }
 
-.navbar-item-search {
+/* .navbar-item-search {
   display: flex;
   align-items: center;
-  position: absolute; /* Add this line */
-  top: 100%; /* Add this line */
-  left: 50%; /* Add this line */
-  transform: translateX(-50%); /* Add this line */
-}
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+} */
 
 .navbar-search-button {
   display: flex;
