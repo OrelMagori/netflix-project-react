@@ -1,0 +1,723 @@
+{
+    "aa": {
+      "ios_name": "Afar",
+      "countries": ["Djibouti", "Eritrea", "Ethiopia"]
+    },
+    "ab": {
+      "ios_name": "Abkhazian",
+      "countries": ["Abkhazia", "Georgia", "Russia"]
+    },
+    "af": {
+      "ios_name": "Afrikaans",
+      "countries": ["South Africa", "Namibia"]
+    },
+    "am": {
+      "ios_name": "Amharic",
+      "countries": ["Ethiopia"]
+    },
+    "ar": {
+      "ios_name": "Arabic",
+      "countries": ["Algeria", "Bahrain", "Comoros", "Djibouti", "Egypt", "Iraq", "Jordan", "Kuwait", "Lebanon", "Libya", "Mauritania", "Morocco", "Oman", "Palestine", "Qatar", "Saudi Arabia", "Somalia", "Sudan", "Syria", "Tunisia", "United Arab Emirates", "Yemen"]
+    },
+    "as": {
+      "ios_name": "Assamese",
+      "countries": ["India"]
+    },
+    "ay": {
+      "ios_name": "Aymara",
+      "countries": ["Bolivia", "Peru"]
+    },
+    "az": {
+      "ios_name": "Azerbaijani",
+      "countries": ["Azerbaijan"]
+    },
+    "ba": {
+      "ios_name": "Bashkir",
+      "countries": ["Russia"]
+    },
+    "be": {
+      "ios_name": "Belarusian",
+      "countries": ["Belarus"]
+    },
+    "bg": {
+      "ios_name": "Bulgarian",
+      "countries": ["Bulgaria"]
+    },
+    "bh": {
+      "ios_name": "Bihari",
+      "countries": ["India", "Nepal"]
+    },
+    "bi": {
+      "ios_name": "Bislama",
+      "countries": ["Vanuatu"]
+    },
+    "bm": {
+      "ios_name": "Bambara",
+      "countries": ["Mali"]
+    },
+    "bn": {
+      "ios_name": "Bengali",
+      "countries": ["Bangladesh", "India"]
+    },
+    "bo": {
+      "ios_name": "Tibetan",
+      "countries": ["China", "India"]
+    },
+    "br": {
+      "ios_name": "Breton",
+      "countries": ["France"]
+    },
+    "bs": {
+      "ios_name": "Bosnian",
+      "countries": ["Bosnia and Herzegovina"]
+    },
+    "ca": {
+      "ios_name": "Catalan",
+      "countries": ["Andorra", "Catalonia (Spain)", "France", "Italy", "Spain"]
+    },
+    "ce": {
+      "ios_name": "Chechen",
+      "countries": ["Chechnya (Russia)"]
+    },
+    "ch": {
+      "ios_name": "Chamorro",
+      "countries": ["Guam", "Northern Mariana Islands (USA)"]
+    },
+    "co": {
+      "ios_name": "Corsican",
+      "countries": ["France", "Italy"]
+    },
+    "cr": {
+      "ios_name": "Cree",
+      "countries": ["Canada"]
+    },
+    "cs": {
+      "ios_name": "Czech",
+      "countries": ["Czech Republic"]
+    },
+    "cu": {
+      "ios_name": "Church Slavic",
+      "countries": ["None"]
+    },
+    "cv": {
+      "ios_name": "Chuvash",
+      "countries": ["Russia"]
+    },
+    "cy": {
+      "ios_name": "Welsh",
+      "countries": ["Wales (UK)"]
+    },
+    "da": {
+      "ios_name": "Danish",
+      "countries": ["Denmark"]
+    },
+    "de": {
+      "ios_name": "German",
+      "countries": ["Germany", "Austria", "Switzerland", "Belgium", "Luxembourg"]
+    },
+    "dv": {
+      "ios_name": "Divehi",
+      "countries": ["Maldives"]
+    },
+    "dz": {
+      "ios_name": "Dzongkha",
+      "countries": ["Bhutan"]
+    },
+    "ee": {
+      "ios_name": "Ewe",
+      "countries": ["Ghana", "Togo"]
+    },
+    "el": {
+      "ios_name": "Greek",
+      "countries": ["Greece", "Cyprus"]
+    },
+    "en": {
+      "ios_name": "English",
+      "countries": ["United States", "United Kingdom", "Canada", "Australia", "New Zealand", "India", "South Africa", "Nigeria", "Ireland"]
+    },
+    "eo": {
+      "ios_name": "Esperanto",
+      "countries": ["None"]
+    },
+    "es": {
+      "ios_name": "Spanish",
+      "countries": ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Venezuela", "Chile", "Ecuador", "Guatemala", "Cuba", "Bolivia", "Dominican Republic", "Honduras", "Paraguay", "El Salvador", "Nicaragua", "Costa Rica", "Puerto Rico", "Panama", "Uruguay", "Equatorial Guinea"]
+    },
+    "et": {
+      "ios_name": "Estonian",
+      "countries": ["Estonia"]
+    },
+    "eu": {
+      "ios_name": "Basque",
+      "countries": ["Basque Country (Spain)", "France"]
+    },
+    "fa": {
+      "ios_name": "Persian",
+      "countries": ["Iran", "Afghanistan", "Tajikistan"]
+    },
+    "ff": {
+      "ios_name": "Fulah",
+      "countries": ["Senegal", "Guinea", "Mali", "Nigeria"]
+    },
+    "fi": {
+      "ios_name": "Finnish",
+      "countries": ["Finland"]
+    },
+    "fj": {
+      "ios_name": "Fijian",
+      "countries": ["Fiji"]
+    },
+    "fo": {
+      "ios_name": "Faroese",
+      "countries": ["Faroe Islands (Denmark)"]
+    },
+    "fr": {
+      "ios_name": "French",
+      "countries": ["France", "Canada", "Belgium", "Switzerland", "Luxembourg", "Monaco"]
+    },
+    "fy": {
+      "ios_name": "Frisian",
+      "countries": ["Netherlands"]
+    },
+    "ga": {
+      "ios_name": "Irish",
+      "countries": ["Ireland"]
+    },
+    "gd": {
+      "ios_name": "Scottish Gaelic",
+      "countries": ["Scotland (UK)"]
+    },
+    "gl": {
+      "ios_name": "Galician",
+      "countries": ["Galicia (Spain)"]
+    },
+    "gn": {
+      "ios_name": "Guarani",
+      "countries": ["Paraguay"]
+    },
+    "gu": {
+      "ios_name": "Gujarati",
+      "countries": ["India"]
+    },
+    "gv": {
+      "ios_name": "Manx",
+      "countries": ["Isle of Man (UK)"]
+    },
+    "ha": {
+      "ios_name": "Hausa",
+      "countries": ["Nigeria", "Niger"]
+    },
+    "he": {
+      "ios_name": "Hebrew",
+      "countries": ["Israel"]
+    },
+    "hi": {
+      "ios_name": "Hindi",
+      "countries": ["India"]
+    },
+    "ho": {
+      "ios_name": "Hiri Motu",
+      "countries": ["Papua New Guinea"]
+    },
+    "hr": {
+      "ios_name": "Croatian",
+      "countries": ["Croatia", "Bosnia and Herzegovina"]
+    },
+    "ht": {
+      "ios_name": "Haitian Creole",
+      "countries": ["Haiti"]
+    },
+    "hu": {
+      "ios_name": "Hungarian",
+      "countries": ["Hungary"]
+    },
+    "hy": {
+      "ios_name": "Armenian",
+      "countries": ["Armenia"]
+    },
+    "hz": {
+      "ios_name": "Herero",
+      "countries": ["Namibia"]
+    },
+    "ia": {
+      "ios_name": "Interlingua",
+      "countries": ["None"]
+    },
+    "id": {
+      "ios_name": "Indonesian",
+      "countries": ["Indonesia"]
+    },
+    "ie": {
+      "ios_name": "Interlingue",
+      "countries": ["None"]
+    },
+    "ig": {
+      "ios_name": "Igbo",
+      "countries": ["Nigeria"]
+    },
+    "ii": {
+      "ios_name": "Sichuan Yi",
+      "countries": ["China"]
+    },
+    "ik": {
+      "ios_name": "Inupiaq",
+      "countries": ["United States (Alaska)"]
+    },
+    "io": {
+      "ios_name": "Ido",
+      "countries": ["None"]
+    },
+    "is": {
+      "ios_name": "Icelandic",
+      "countries": ["Iceland"]
+    },
+    "it": {
+      "ios_name": "Italian",
+      "countries": ["Italy", "Switzerland", "San Marino", "Vatican City"]
+    },
+    "iu": {
+      "ios_name": "Inuktitut",
+      "countries": ["Canada"]
+    },
+    "ja": {
+      "ios_name": "Japanese",
+      "countries": ["Japan"]
+    },
+    "jv": {
+      "ios_name": "Javanese",
+      "countries": ["Indonesia"]
+    },
+    "ka": {
+      "ios_name": "Georgian",
+      "countries": ["Georgia"]
+    },
+    "kg": {
+      "ios_name": "Kongo",
+      "countries": ["Democratic Republic of the Congo", "Republic of the Congo"]
+    },
+    "ki": {
+      "ios_name": "Kikuyu",
+      "countries": ["Kenya"]
+    },
+    "kj": {
+      "ios_name": "Kuanyama",
+      "countries": ["Namibia"]
+    },
+    "kk": {
+      "ios_name": "Kazakh",
+      "countries": ["Kazakhstan"]
+    },
+    "kl": {
+      "ios_name": "Kalaallisut",
+      "countries": ["Greenland (Denmark)"]
+    },
+    "km": {
+      "ios_name": "Khmer",
+      "countries": ["Cambodia"]
+    },
+    "kn": {
+      "ios_name": "Kannada",
+      "countries": ["India"]
+    },
+    "ko": {
+      "ios_name": "Korean",
+      "countries": ["South Korea", "North Korea"]
+    },
+    "kr": {
+      "ios_name": "Kanuri",
+      "countries": ["Nigeria", "Niger"]
+    },
+    "ks": {
+      "ios_name": "Kashmiri",
+      "countries": ["India", "Pakistan"]
+    },
+    "ku": {
+      "ios_name": "Kurdish",
+      "countries": ["Turkey", "Iraq", "Iran", "Syria"]
+    },
+    "kv": {
+      "ios_name": "Komi",
+      "countries": ["Russia"]
+    },
+    "kw": {
+      "ios_name": "Cornish",
+      "countries": ["Cornwall (UK)"]
+    },
+    "ky": {
+      "ios_name": "Kyrgyz",
+      "countries": ["Kyrgyzstan"]
+    },
+    "la": {
+      "ios_name": "Latin",
+      "countries": ["None"]
+    },
+    "lb": {
+      "ios_name": "Luxembourgish",
+      "countries": ["Luxembourg"]
+    },
+    "lg": {
+      "ios_name": "Ganda",
+      "countries": ["Uganda"]
+    },
+    "li": {
+      "ios_name": "Limburgish",
+      "countries": ["Netherlands", "Belgium", "Germany"]
+    },
+    "ln": {
+      "ios_name": "Lingala",
+      "countries": ["Democratic Republic of the Congo", "Republic of the Congo"]
+    },
+    "lo": {
+      "ios_name": "Lao",
+      "countries": ["Laos"]
+    },
+    "lt": {
+      "ios_name": "Lithuanian",
+      "countries": ["Lithuania"]
+    },
+    "lu": {
+      "ios_name": "Luba-Katanga",
+      "countries": ["Democratic Republic of the Congo"]
+    },
+    "lv": {
+      "ios_name": "Latvian",
+      "countries": ["Latvia"]
+    },
+    "mg": {
+      "ios_name": "Malagasy",
+      "countries": ["Madagascar"]
+    },
+    "mh": {
+      "ios_name": "Marshallese",
+      "countries": ["Marshall Islands"]
+    },
+    "mi": {
+      "ios_name": "Maori",
+      "countries": ["New Zealand"]
+    },
+    "mk": {
+      "ios_name": "Macedonian",
+      "countries": ["North Macedonia"]
+    },
+    "ml": {
+      "ios_name": "Malayalam",
+      "countries": ["India"]
+    },
+    "mn": {
+      "ios_name": "Mongolian",
+      "countries": ["Mongolia"]
+    },
+    "mr": {
+      "ios_name": "Marathi",
+      "countries": ["India"]
+    },
+    "ms": {
+      "ios_name": "Malay",
+      "countries": ["Malaysia", "Indonesia", "Brunei"]
+    },
+    "mt": {
+      "ios_name": "Maltese",
+      "countries": ["Malta"]
+    },
+    "my": {
+      "ios_name": "Burmese",
+      "countries": ["Myanmar (Burma)"]
+    },
+    "na": {
+      "ios_name": "Nauru",
+      "countries": ["Nauru"]
+    },
+    "nb": {
+      "ios_name": "Norwegian Bokmål",
+      "countries": ["Norway"]
+    },
+    "nd": {
+      "ios_name": "North Ndebele",
+      "countries": ["Zimbabwe"]
+    },
+    "ne": {
+      "ios_name": "Nepali",
+      "countries": ["Nepal"]
+    },
+    "ng": {
+      "ios_name": "Ndonga",
+      "countries": ["Namibia"]
+    },
+    "nl": {
+      "ios_name": "Dutch",
+      "countries": ["Netherlands", "Belgium", "Suriname"]
+    },
+    "nn": {
+      "ios_name": "Norwegian Nynorsk",
+      "countries": ["Norway"]
+    },
+    "no": {
+      "ios_name": "Norwegian",
+      "countries": ["Norway"]
+    },
+    "nr": {
+      "ios_name": "South Ndebele",
+      "countries": ["South Africa"]
+    },
+    "nv": {
+      "ios_name": "Navajo",
+      "countries": ["United States"]
+    },
+    "ny": {
+      "ios_name": "Chichewa",
+      "countries": ["Malawi", "Zambia"]
+    },
+    "oc": {
+      "ios_name": "Occitan",
+      "countries": ["France", "Italy", "Spain"]
+    },
+    "oj": {
+      "ios_name": "Ojibwa",
+      "countries": ["Canada", "United States"]
+    },
+    "om": {
+      "ios_name": "Oromo",
+      "countries": ["Ethiopia"]
+    },
+    "or": {
+      "ios_name": "Oriya",
+      "countries": ["India"]
+    },
+    "os": {
+      "ios_name": "Ossetian",
+      "countries": ["Russia"]
+    },
+    "pa": {
+      "ios_name": "Punjabi",
+      "countries": ["India", "Pakistan"]
+    },
+    "pi": {
+      "ios_name": "Pali",
+      "countries": ["None"]
+    },
+    "pl": {
+      "ios_name": "Polish",
+      "countries": ["Poland"]
+    },
+    "ps": {
+      "ios_name": "Pashto",
+      "countries": ["Afghanistan", "Pakistan"]
+    },
+    "pt": {
+      "ios_name": "Portuguese",
+      "countries": ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau", "Timor-Leste", "Equatorial Guinea", "Cape Verde", "Macau"]
+    },
+    "qu": {
+      "ios_name": "Quechua",
+      "countries": ["Bolivia", "Peru", "Ecuador", "Colombia"]
+    },
+    "rm": {
+      "ios_name": "Romansh",
+      "countries": ["Switzerland"]
+    },
+    "rn": {
+      "ios_name": "Rundi",
+      "countries": ["Burundi"]
+    },
+    "ro": {
+      "ios_name": "Romanian",
+      "countries": ["Romania", "Moldova"]
+    },
+    "ru": {
+      "ios_name": "Russian",
+      "countries": ["Russia", "Belarus", "Kazakhstan", "Kyrgyzstan"]
+    },
+    "rw": {
+      "ios_name": "Kinyarwanda",
+      "countries": ["Rwanda"]
+    },
+    "sa": {
+      "ios_name": "Sanskrit",
+      "countries": ["None"]
+    },
+    "sc": {
+      "ios_name": "Sardinian",
+      "countries": ["Italy"]
+    },
+    "sd": {
+      "ios_name": "Sindhi",
+      "countries": ["Pakistan", "India"]
+    },
+    "se": {
+      "ios_name": "Northern Sami",
+      "countries": ["Norway", "Sweden", "Finland", "Russia"]
+    },
+    "sg": {
+      "ios_name": "Sango",
+      "countries": ["Central African Republic"]
+    },
+    "si": {
+      "ios_name": "Sinhala",
+      "countries": ["Sri Lanka"]
+    },
+    "sk": {
+      "ios_name": "Slovak",
+      "countries": ["Slovakia"]
+    },
+    "sl": {
+      "ios_name": "Slovenian",
+      "countries": ["Slovenia"]
+    },
+    "sm": {
+      "ios_name": "Samoan",
+      "countries": ["Samoa"]
+    },
+    "sn": {
+      "ios_name": "Shona",
+      "countries": ["Zimbabwe", "Mozambique"]
+    },
+    "so": {
+      "ios_name": "Somali",
+      "countries": ["Somalia", "Djibouti"]
+    },
+    "sq": {
+      "ios_name": "Albanian",
+      "countries": ["Albania", "Kosovo", "North Macedonia"]
+    },
+    "sr": {
+      "ios_name": "Serbian",
+      "countries": ["Serbia", "Bosnia and Herzegovina", "Montenegro", "Kosovo", "Croatia"]
+    },
+    "ss": {
+      "ios_name": "Swati",
+      "countries": ["Eswatini", "South Africa"]
+    },
+    "st": {
+      "ios_name": "Southern Sotho",
+      "countries": ["Lesotho", "South Africa"]
+    },
+    "su": {
+      "ios_name": "Sundanese",
+      "countries": ["Indonesia"]
+    },
+    "sv": {
+      "ios_name": "Swedish",
+      "countries": ["Sweden"]
+    },
+    "sw": {
+      "ios_name": "Swahili",
+      "countries": ["Tanzania", "Kenya", "Uganda"]
+    },
+    "ta": {
+      "ios_name": "Tamil",
+      "countries": ["India", "Sri Lanka", "Singapore"]
+    },
+    "te": {
+      "ios_name": "Telugu",
+      "countries": ["India"]
+    },
+    "tg": {
+      "ios_name": "Tajik",
+      "countries": ["Tajikistan"]
+    },
+    "th": {
+      "ios_name": "Thai",
+      "countries": ["Thailand"]
+    },
+    "ti": {
+      "ios_name": "Tigrinya",
+      "countries": ["Eritrea", "Ethiopia"]
+    },
+    "tk": {
+      "ios_name": "Turkmen",
+      "countries": ["Turkmenistan"]
+    },
+    "tl": {
+      "ios_name": "Tagalog",
+      "countries": ["Philippines"]
+    },
+    "tn": {
+      "ios_name": "Tswana",
+      "countries": ["Botswana", "South Africa"]
+    },
+    "to": {
+      "ios_name": "Tongan",
+      "countries": ["Tonga"]
+    },
+    "tr": {
+      "ios_name": "Turkish",
+      "countries": ["Turkey"]
+    },
+    "ts": {
+      "ios_name": "Tsonga",
+      "countries": ["South Africa"]
+    },
+    "tt": {
+      "ios_name": "Tatar",
+      "countries": ["Russia"]
+    },
+    "tw": {
+      "ios_name": "Twi",
+      "countries": ["Ghana"]
+    },
+    "ty": {
+      "ios_name": "Tahitian",
+      "countries": ["French Polynesia"]
+    },
+    "ug": {
+      "ios_name": "Uighur",
+      "countries": ["China"]
+    },
+    "uk": {
+      "ios_name": "Ukrainian",
+      "countries": ["Ukraine"]
+    },
+    "ur": {
+      "ios_name": "Urdu",
+      "countries": ["Pakistan", "India"]
+    },
+    "uz": {
+      "ios_name": "Uzbek",
+      "countries": ["Uzbekistan"]
+    },
+    "ve": {
+      "ios_name": "Venda",
+      "countries": ["South Africa"]
+    },
+    "vi": {
+      "ios_name": "Vietnamese",
+      "countries": ["Vietnam"]
+    },
+    "vo": {
+      "ios_name": "Volapük",
+      "countries": ["None"]
+    },
+    "wa": {
+      "ios_name": "Walloon",
+      "countries": ["Belgium"]
+    },
+    "wo": {
+      "ios_name": "Wolof",
+      "countries": ["Senegal", "Gambia", "Mauritania"]
+    },
+    "xh": {
+      "ios_name": "Xhosa",
+      "countries": ["South Africa"]
+    },
+    "yi": {
+      "ios_name": "Yiddish",
+      "countries": ["None"]
+    },
+    "yo": {
+      "ios_name": "Yoruba",
+      "countries": ["Nigeria", "Benin", "Togo"]
+    },
+    "za": {
+      "ios_name": "Zhuang",
+      "countries": ["China"]
+    },
+    "zh": {
+      "ios_name": "Chinese",
+      "countries": ["China", "Taiwan", "Singapore", "Hong Kong", "Macau"]
+    },
+    "zu": {
+      "ios_name": "Zulu",
+      "countries": ["South Africa", "Lesotho", "Eswatini"]
+    }
+  }
+  

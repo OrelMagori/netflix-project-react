@@ -5,6 +5,7 @@ import "./Register.css";
 import ages from "../database/ages.json";
 import { MainButton } from "../components/MainButton";
 import { useApiContext } from "../hooks/useApiContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const Register = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,7 @@ export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
+  const { dispatch } = useAuthContext();
 
   const { apiCall } = useApiContext();
   const navigate = useNavigate();
@@ -22,7 +24,6 @@ export const Register = (props) => {
 
   const signup = async (event) => {
     event.preventDefault();
-    console.log(firstName, lastName, email, password, age);
     try {
       const { status, data } = await apiCall("users/signup", "POST", {
         firstName,
@@ -38,6 +39,8 @@ export const Register = (props) => {
       setEmail("");
       setPassword("");
       setAge("");
+      localStorage.setItem("user", JSON.stringify(data.user));
+      dispatch({ type: "LOGIN", payload: data.user });
       navigate("/home");
     } catch (error) {
       console.log(error);
