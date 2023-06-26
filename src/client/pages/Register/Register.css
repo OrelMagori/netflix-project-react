@@ -1,0 +1,53 @@
+select {
+  width: 330px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  position: relative;
+}
+
+select::after {
+  content: "\25BC";
+  position: absolute;
+  top: calc(50% + 6px);
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+select option {
+  font-size: 18px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+select option {
+  padding: 10px;
+  background-color: #141414;
+  color: #fff;
+  font-size: 20px;
+}
+
+select option:hover {
+  background-color: #e50914;
+  color: #fff;
+}
+
+select option:checked {
+  background-color: #e50914;
+  color: #fff;
+}
+
+select option::before {
+  content: "\25CF"; /* Unicode character for a filled circle */
+  margin-right: 10px;
+  color: #e50914;
+}
