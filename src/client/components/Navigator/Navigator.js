@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
 
@@ -11,6 +11,10 @@ export default function Navigator() {
   const logout = () => {
     dispatch({ type: "LOGOUT", payload: null });
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <nav className="navbar">
@@ -35,12 +39,6 @@ export default function Navigator() {
             Favorite
           </Link>
         </li>
-        {/* </ul>
-      {showSearch && false}
-      <button className="navbar-search-button" onClick={handleSearchClick}>
-        Search
-      </button>
-      <ul> */}
         <li className="navbar-item navbar-item-logout">
           <Link to="/" className="navbar-link" onClick={logout}>
             <FiLogOut className="logout-icon" />

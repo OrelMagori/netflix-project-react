@@ -28,18 +28,18 @@
 
 .scroll-button-left,
 .scroll-button-right {
-  position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 30px;
   height: 30%;
   margin: 10px;
-  background-color: #141414;
   opacity: 0.5;
   border: none;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  background-color: #141414;
+  transform: translateY(-50%);
 }
 .scroll-button-left:hover,
 .scroll-button-right:hover {

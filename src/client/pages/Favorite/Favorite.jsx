@@ -2,16 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { FiTrash2, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import "./Favorite.css";
-import Navigator from "../../components/Navigator/Navigator";
 import { useApiContext } from "../../hooks/useApiContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Navigator from "../../components/Navigator/Navigator";
+import ModalItem from "../../components/ModalItem/ModalItem";
 
 export const Favorite = () => {
-  const [movies, setMovies] = useState([]);
-  const [series, setSeries] = useState([]);
-  const [myFavoriteArray, setMyFavoriteArray] = useState([]);
   const moviesContainerRef = useRef(null);
   const seriesContainerRef = useRef(null);
+  const [movies, setMovies] = useState([]);
+  const [series, setSeries] = useState([]);
+  const [modalContent, setModalContent] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [myFavoriteArray, setMyFavoriteArray] = useState([]);
 
   const { apiCall } = useApiContext();
   const { user } = useAuthContext();
@@ -39,9 +42,28 @@ export const Favorite = () => {
     fetchFavorites();
   }, []);
 
+  // const openPopup = (content) => {
+  //   console.log(content);
+  //   window.alert(
+  //     content.synopsis +
+  //       " " +
+  //       content.director +
+  //       " " +
+  //       content.actors +
+  //       " " +
+  //       content.country +
+  //       " " +
+  //       content.date
+  //   );
+  // };
+
   const openPopup = (content) => {
-    console.log(content);
-    window.alert(content.synopsis + " " + content.director + " " + content.actors + " " + content.country + " " + content.date);
+    setModalContent(content);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   const deleteItem = async (item, event) => {
@@ -82,6 +104,11 @@ export const Favorite = () => {
   return (
     <div>
       <Navigator />
+      <ModalItem
+        visible={modalVisible}
+        onCancel={closeModal}
+        content={modalContent}
+      />
       <h1>Favorite</h1>
       <div className="row-container">
         <div className="scroll-container">
