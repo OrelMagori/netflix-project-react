@@ -68,7 +68,9 @@ export const Login = (props) => {
             value={password}
             onChange={passwordChangeHandler}
           />
-          <button type="submit">Login</button>
+          <button className="mainButton" type="submit">
+            Login
+          </button>
           <p>
             Don't have an account?{" "}
             <span className="link" onClick={handleRegisterButton}>

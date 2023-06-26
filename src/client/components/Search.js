@@ -165,7 +165,7 @@ const handleImageClick = async (content) => {
           onClick={handleSearchButtonClick}
           style={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
         >
-          <FiSearch style={{ size: 25, color: "white" }} className="search-icon"/>
+          <FiSearch style={{ size: 25, color: "white" }}/>
         </button>
         </div>
       <div>

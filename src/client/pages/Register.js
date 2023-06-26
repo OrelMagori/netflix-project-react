@@ -85,7 +85,7 @@ export const Register = (props) => {
               </option>
             ))}
           </select>
-          <button type="submit" className="register-btn">
+          <button className="mainButton" type="submit">
             <span className="btn-icon">Get Started</span>
           </button>
         </form>

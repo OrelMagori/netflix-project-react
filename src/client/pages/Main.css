@@ -1,6 +1,7 @@
 body {
   background-image: url("../../../public/images/loginBackground.jpg");
   background-size: cover;
+  background-attachment: fixed;
   color: #fff;
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 100vh;
@@ -49,7 +50,9 @@ body {
   font-size: 20px;
 }
 
-.largeSpan, .mediumSpan, .smallSpan {
+.largeSpan,
+.mediumSpan,
+.smallSpan {
   margin-bottom: 20px;
   text-align: center;
 }
@@ -69,7 +72,7 @@ input {
   font-size: 16px;
 }
 
-button {
+.mainButton {
   width: 300px;
   padding: 15px;
   margin-top: 10px;
@@ -82,7 +85,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.mainButton:hover {
   background-color: #db080f;
 }
 

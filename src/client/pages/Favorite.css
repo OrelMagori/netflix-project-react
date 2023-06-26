@@ -1,45 +1,105 @@
-.movie-container,
+.movies-container,
 .series-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.movie-container > div,
-.series-container > div {
-  cursor: pointer;
-  text-align: center;
+  overflow-x: hidden;
+  margin-bottom: 20px;
 }
 
 .movies-container img,
 .series-container img {
   width: 200px;
-  height: auto;
-  cursor: pointer;
+  height: 300px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .movies-container p,
 .series-container p {
-    width: 200px; /* Match the width of the image */
-    margin-top: 10px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;  
+  width: 200px;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.movies-container {
-    display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling if there are more movies than can fit in the container */
-    margin-bottom: 20px; /* Add margin at the bottom */
-  }
-  
-  .movie-item {
-    flex: 0 0 auto; /* Prevent movies from shrinking or growing */
-  }
-  
-  .movie-item:last-child {
-    margin-right: 0; /* Remove margin for the last movie item */
-  }
-  
+.scroll-container {
+  position: relative;
+}
+
+.scroll-button-left,
+.scroll-button-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30%;
+  margin: 10px;
+  background-color: #141414;
+  opacity: 0.5;
+  border: none;
+}
+.scroll-button-left:hover,
+.scroll-button-right:hover {
+  background-color: #141414;
+  opacity: 0.7;
+}
+
+
+.scroll-button-left {
+  left: 10px;
+  cursor: pointer;
+
+}
+
+.scroll-button-right {
+  right: 0;
+  cursor: pointer;
+
+}
+
+.arrow-icon {
+  font-size: 30px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-container .scroll-button button {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+}
+
+.movie-item .serie-item {
+  flex: 0 0 auto;
+}
+
+.serie-item {
+  flex: 0 0 auto;
+}
+
+.movie-item:last-child {
+  margin-right: 0;
+}
+
+.delete-button {
+  border: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.delete-icon {
+  font-size: 30px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+.delete-icon:hover {
+  color: #e50914;
+}

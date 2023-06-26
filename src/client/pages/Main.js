@@ -22,6 +22,7 @@ export const Main = (props) => {
           Ready to watch? Enter your email to create or restart your membership.
         </p>
         <button
+          className="mainButton"
           type="button"
           onClick={handleRegisterButton}
           style={{ marginRight: 10 }}
@@ -29,6 +30,7 @@ export const Main = (props) => {
           Register
         </button>
         <button
+          className="mainButton"
           type="button"
           onClick={handleLoginButton}
           style={{ marginLeft: 10 }}
