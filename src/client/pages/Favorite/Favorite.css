@@ -87,9 +87,10 @@
   border: none;
   display: flex;
   cursor: pointer;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-color: transparent;
+  margin-bottom: 10%;
 }
 
 .delete-icon {
@@ -100,4 +101,18 @@
 }
 .delete-icon:hover {
   color: #e50914;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5%;
+}
+
+h1 {
+  /* font-size: 50px; */
+  font-weight: bold;
+  /* text-align: center; */
+  margin-left: 1%;
 }

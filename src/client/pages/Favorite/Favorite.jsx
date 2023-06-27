@@ -14,7 +14,7 @@ export const Favorite = () => {
   const [series, setSeries] = useState([]);
   const [modalContent, setModalContent] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [myFavoriteArray, setMyFavoriteArray] = useState([]);
+  // const [myFavoriteArray, setMyFavoriteArray] = useState([]);
 
   const { apiCall } = useApiContext();
   const { user } = useAuthContext();
@@ -24,7 +24,7 @@ export const Favorite = () => {
       let api = `favorites?userId=${user?._id}`;
       const { data } = await apiCall(api);
       console.log(data.favoritesArray);
-      setMyFavoriteArray(data.favoritesArray);
+      // setMyFavoriteArray(data.favoritesArray);
       const moviesArray = data.favoritesArray.filter(
         (item) => item.type === "movie"
       );
@@ -40,22 +40,8 @@ export const Favorite = () => {
 
   useEffect(() => {
     fetchFavorites();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // const openPopup = (content) => {
-  //   console.log(content);
-  //   window.alert(
-  //     content.synopsis +
-  //       " " +
-  //       content.director +
-  //       " " +
-  //       content.actors +
-  //       " " +
-  //       content.country +
-  //       " " +
-  //       content.date
-  //   );
-  // };
 
   const openPopup = (content) => {
     setModalContent(content);
@@ -109,25 +95,27 @@ export const Favorite = () => {
         onCancel={closeModal}
         content={modalContent}
       />
-      <h1>Favorite</h1>
       <div className="row-container">
+      <h2>{`${user.firstName}'s Favorites`}</h2>
         <div className="scroll-container">
-          <h2>Movies</h2>
+          <h1>Movies</h1>
           <div className="movies-container" ref={moviesContainerRef}>
             {movies.map((movie) => (
-              <div
-                className="movie-item"
-                key={movie.id}
-                onClick={() => openPopup(movie)}
-              >
-                <img src={movie.image} alt={movie.title} />
-                <button
-                  className="delete-button"
-                  onClick={(e) => deleteItem({ movie }, e)}
-                >
-                  <FiTrash2 className="delete-icon" />
-                </button>
-              </div>
+              <>
+                <div className="movie-item" key={movie.id}>
+                  <img
+                    src={movie.image}
+                    alt={movie.title}
+                    onClick={() => openPopup(movie)}
+                  />
+                  <button
+                    className="delete-button"
+                    onClick={(e) => deleteItem({ movie }, e)}
+                  >
+                    <FiTrash2 className="delete-icon" />
+                  </button>
+                </div>
+              </>
             ))}
           </div>
           <button
@@ -147,12 +135,12 @@ export const Favorite = () => {
           <h1>Series</h1>
           <div className="series-container" ref={seriesContainerRef}>
             {series.map((serie) => (
-              <div
-                className="serie-item"
-                key={serie.id}
-                onClick={() => openPopup(serie)}
-              >
-                <img src={serie.image} alt={serie.title} />
+              <div className="serie-item" key={serie.id}>
+                <img
+                  src={serie.image}
+                  alt={serie.title}
+                  onClick={() => openPopup(serie)}
+                />
                 <button
                   className="delete-button"
                   onClick={(e) => deleteItem({ serie }, e)}

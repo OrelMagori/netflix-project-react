@@ -17,40 +17,41 @@ const ModalItem = ({ visible, onCancel, content }) => {
       title={name}
       footer={null}
       width={1000}
-      bodyStyle={{ maxHeight: 600 }}
+      //   bodyStyle={{ maxHeight: 600 }}
       className="custom-modal"
     >
-      {synopsis ? (
+      {synopsis !== undefined ? (
         <>
           <span className="modal-label">Synopsis</span>
           <p>{synopsis}</p>
         </>
       ) : null}
 
-      {director ? (
+      {director.length > 0 ? (
         <>
           <span className="modal-label">Director</span>
           <p>{director}</p>
         </>
       ) : null}
 
-      {actors ? (
+      {actors.length > 0 ? (
         <>
           <span className="modal-label">Actors</span>
           <p>{actors}</p>
         </>
       ) : null}
 
-      {country ? (
+      {country !== undefined ? (
         <>
           <span className="modal-label">Country</span>
           <p>{country}</p>
         </>
       ) : null}
 
-      {date ? (
+      {date !== undefined ? (
         <>
           <span className="modal-label">Date</span>
+          {console.log(date)}
           <p>{date}</p>
         </>
       ) : null}

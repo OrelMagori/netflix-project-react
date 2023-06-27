@@ -15,8 +15,8 @@ export const Home = () => {
         </div>
       ): (
         <div>
-          <Navigator />
-          <h1>please login again</h1>
+          {/* <Navigator /> */}
+          <h1 className="h1">Please login again</h1>
         </div>
   )}
     </div>
