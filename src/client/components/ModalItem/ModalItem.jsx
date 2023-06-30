@@ -1,24 +1,47 @@
 import React from "react";
-import { Modal } from "antd";
+import { Modal, Rate, Button } from "antd";
+import { FiTrash2 } from "react-icons/fi";
 
 import "./ModalItem.css";
 
-const ModalItem = ({ visible, onCancel, content }) => {
-  if (!content) {
-    return null;
-  }
+// import { deleteItem } from "../../pages/Favorite/Favorite.jsx";
+
+const desc = ["1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"];
+
+const ModalItem = ({ visible, onCancel, content, movie, serie }) => {
+  if (!content) return;
 
   const { name, synopsis, director, actors, country, date } = content;
+
+  const handleButtonClick = (e) => {
+    // deleteItem(movie ? movie : serie, e);
+  };
 
   return (
     <Modal
       visible={visible}
       onCancel={onCancel}
       title={name}
-      footer={null}
       width={1000}
-      //   bodyStyle={{ maxHeight: 600 }}
+      bodyStyle={{
+        overflowY: "auto",
+        maxHeight: '70vh',
+      }}
       className="custom-modal"
+      footer={
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Button
+            key="back"
+            onClick={handleButtonClick}
+            className="delete-button-modal"
+          >
+            <FiTrash2 className="delete-icon-modal" />
+          </Button>
+          <div>
+            <Rate tooltips={desc} />
+          </div>
+        </div>
+      }
     >
       {synopsis !== undefined ? (
         <>
