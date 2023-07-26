@@ -22,7 +22,6 @@ export const Favorite = () => {
     try {
       let api = `favorites?userId=${user?._id}`;
       const { data } = await apiCall(api);
-      console.log(data.favoritesArray);
       const moviesArray = data.favoritesArray.filter(
         (item) => item.type === "movie"
       );
@@ -52,17 +51,12 @@ export const Favorite = () => {
 
   const deleteItem = async (item, event) => {
     event.preventDefault();
-    console.log(item);
     let id = item?.movie?.id || item?.serie?.id;
-    console.log(id);
-    console.log(user);
     try {
-      const { status, data } = await apiCall("favorites/delete", "DELETE", {
+      await apiCall("favorites/delete", "DELETE", {
         user: user,
         id: id,
       });
-      console.log(status);
-      console.log(data);
       fetchFavorites();
     } catch (error) {
       console.log(error);
