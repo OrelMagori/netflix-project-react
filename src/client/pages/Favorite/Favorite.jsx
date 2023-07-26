@@ -14,7 +14,6 @@ export const Favorite = () => {
   const [series, setSeries] = useState([]);
   const [modalContent, setModalContent] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  // const [myFavoriteArray, setMyFavoriteArray] = useState([]);
 
   const { apiCall } = useApiContext();
   const { user } = useAuthContext();
@@ -23,8 +22,6 @@ export const Favorite = () => {
     try {
       let api = `favorites?userId=${user?._id}`;
       const { data } = await apiCall(api);
-      console.log(data.favoritesArray);
-      // setMyFavoriteArray(data.favoritesArray);
       const moviesArray = data.favoritesArray.filter(
         (item) => item.type === "movie"
       );
@@ -54,17 +51,12 @@ export const Favorite = () => {
 
   const deleteItem = async (item, event) => {
     event.preventDefault();
-    console.log(item);
     let id = item?.movie?.id || item?.serie?.id;
-    console.log(id);
-    console.log(user);
     try {
-      const { status, data } = await apiCall("favorites/delete", "DELETE", {
+      await apiCall("favorites/delete", "DELETE", {
         user: user,
         id: id,
       });
-      console.log(status);
-      console.log(data);
       fetchFavorites();
     } catch (error) {
       console.log(error);
@@ -96,7 +88,7 @@ export const Favorite = () => {
         content={modalContent}
       />
       <div className="row-container">
-      <h2>{`${user.firstName}'s Favorites`}</h2>
+        <h2>{`${user.firstName}'s Favorites`}</h2>
         <div className="scroll-container">
           <h1>Movies</h1>
           <div className="movies-container" ref={moviesContainerRef}>
@@ -145,7 +137,7 @@ export const Favorite = () => {
                   className="delete-button"
                   onClick={(e) => deleteItem({ serie }, e)}
                 >
-                  <FiTrash2 className="delete-icon" />{" "}
+                  <FiTrash2 className="delete-icon" />
                 </button>
               </div>
             ))}

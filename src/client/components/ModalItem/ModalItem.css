@@ -1,17 +1,28 @@
-.modal {
-  width: 1000;
-  background-color: #141414;
-  border-radius: 80%;
+.custom-modal {
+  top: 8%;
 }
 
 .custom-modal .ant-modal-title {
   font-size: 50px;
-    font-weight: bold;
-    text-align: center;
+  font-weight: bold;
+  text-align: center;
 }
 
 .modal-label {
   font-size: 25px;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.delete-button-modal {
+  border: none;
+  background-color: transparent;
+}
+
+.delete-icon-modal {
+  font-size: 25px;
+  color: black;
+}
+.delete-icon-modal:hover {
+  color: #e50914;
 }

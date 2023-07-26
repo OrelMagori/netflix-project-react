@@ -13,9 +13,8 @@ export const Home = () => {
           <Navigator />
           <Search />
         </div>
-      ): (
+      ):(
         <div>
-          {/* <Navigator /> */}
           <h1 className="h1">Please login again</h1>
         </div>
   )}

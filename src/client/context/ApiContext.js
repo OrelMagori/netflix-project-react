@@ -22,9 +22,11 @@ export const ApiContextProvider = ({ children }) => {
     console.log(json);
     if (!result.ok) {
       if (result.status === 401) {
+        // eslint-disable-next-line no-throw-literal
         throw "you_are_not_authorized";
       }
       window.alert(json?.error);
+      // eslint-disable-next-line no-throw-literal
       throw {
         status: result.status,
         ...json,

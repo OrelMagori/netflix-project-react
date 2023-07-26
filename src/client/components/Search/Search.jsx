@@ -38,7 +38,7 @@ export default function Search() {
       }
     };
     fetchFavorites();
-  }, []);
+  }, [apiCall, user?._id]);
 
   const getCountryFromLanguageCode = (languageCode) => {
     const language = iosData[languageCode];
