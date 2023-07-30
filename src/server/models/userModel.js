@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
@@ -36,7 +38,8 @@ const userSchema = new Schema(
 
 userSchema.statics.login = async function (email, password) {
   if (!email || !password) {
-    throw Error("All fields must be filled");
+    toast.error("All fields must be filled");
+    // throw Error("All fields must be filled");
   }
 
   const user = await this.findOne({ email });
@@ -58,7 +61,8 @@ userSchema.statics.signup = async function (
   favorites
 ) {
   if (!firstName || !lastName || !email || !password || !age) {
-    throw Error("All fields must be filled");
+    toast.error("All fields must be filled");
+    // throw Error("All fields must be filled");
   }
   if (age < 18) {
     throw Error("You must be 18 or older to register");
@@ -72,15 +76,6 @@ userSchema.statics.signup = async function (
   if (password.length < 6) {
     throw Error("Password must be at least 6 characters long");
   }
-  // if (
-  //   !password.match(/[0-9]/g) ||
-  //   !password.match(/[a-z]/g) ||
-  //   !password.match(/[A-Z]/g)
-  // ) {
-  //   throw Error(
-  //     "Password must contain at least one uppercase letter, one lowercase letter, and one number"
-  //   );
-  // }
 
   const exists = await this.findOne({ email });
   if (exists) {
@@ -94,7 +89,7 @@ userSchema.statics.signup = async function (
     email,
     password: hash,
     age,
-    favorites
+    favorites,
   });
 
   return user;

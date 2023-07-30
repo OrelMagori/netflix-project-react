@@ -1,8 +1,9 @@
 import React from "react";
+
 import "./Home.css";
-import Navigator from "../../components/Navigator/Navigator";
 import Search from "../../components/Search/Search";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Navigator from "../../components/Navigator/Navigator";
 
 export const Home = () => {
   const { user } = useAuthContext();

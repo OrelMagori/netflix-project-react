@@ -74,9 +74,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <span className="footer-copy">
-          &#169; 2023 Netflix Simulator. All rights reserved.
-        </span>
+        <span className="footer-copy">© Created by Orel Magori & Idan Yaron - 2023</span>
       </div>
     </footer>
   );

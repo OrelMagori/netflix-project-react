@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import "./Register.css";
 import ages from "../../database/ages.json";
-import { MainButton } from "../../components/MainButton/MainButton";
 import { useApiContext } from "../../hooks/useApiContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { MainButton } from "../../components/MainButton/MainButton";
 
 export const Register = (props) => {
   const [firstName, setFirstName] = useState("");
@@ -21,6 +21,10 @@ export const Register = (props) => {
   useEffect(() => {
     setAge(ages);
   }, []);
+
+  const handleLoginButton = () => {
+    window.location.href = "/login";
+  };
 
   const signup = async (event) => {
     event.preventDefault();
@@ -41,7 +45,7 @@ export const Register = (props) => {
       setAge("");
       localStorage.setItem("user", JSON.stringify(data.user));
       dispatch({ type: "LOGIN", payload: data.user });
-      navigate("/home");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +92,12 @@ export const Register = (props) => {
           <button className="mainButton" type="submit">
             <span className="btn-icon">Get Started</span>
           </button>
+          <p>
+            Already have an account? {" "}
+            <span className="link" onClick={handleLoginButton}>
+              Sign in
+            </span>
+          </p>
         </form>
       </div>
     </div>

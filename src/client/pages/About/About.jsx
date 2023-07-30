@@ -10,7 +10,7 @@ export const About = () => {
       <Navigator />
       <div className="about-container">
         <main className="content">
-          <h1 style={{ textAlign: "center" }}>About Us</h1>
+          <h1 style={{ textAlign: "center", marginTop: '5vh' }}>About Us</h1>
           <div className="about-section">
             <p>
               Welcome to our website! We are two students studying software
@@ -32,7 +32,7 @@ export const About = () => {
             </p>
             <p>
               One of the key features of our website is the integration of the
-              IMDb API. By leveraging this API, we were able to fetch a vast
+              TMDb API. By leveraging this API, we were able to fetch a vast
               collection of movie data, including titles, descriptions, ratings,
               and more. This integration allowed us to provide users with an
               authentic Netflix-like experience, complete with a rich catalog of

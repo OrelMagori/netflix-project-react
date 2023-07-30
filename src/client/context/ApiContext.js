@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 export const ApiContext = createContext();
 export const ApiContextProvider = ({ children }) => {
@@ -20,12 +20,15 @@ export const ApiContextProvider = ({ children }) => {
     });
     const json = await result.json();
     console.log(json);
+
     if (!result.ok) {
       if (result.status === 401) {
         // eslint-disable-next-line no-throw-literal
         throw "you_are_not_authorized";
       }
-      window.alert(json?.error);
+      // window.alert(json?.error);
+      toast.error(json?.error);
+
       // eslint-disable-next-line no-throw-literal
       throw {
         status: result.status,
@@ -36,6 +39,20 @@ export const ApiContextProvider = ({ children }) => {
   };
 
   return (
-    <ApiContext.Provider value={{ apiCall }}>{children}</ApiContext.Provider>
+    <>
+      <ApiContext.Provider value={{ apiCall }}>{children}</ApiContext.Provider>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
+      />
+    </>
   );
 };

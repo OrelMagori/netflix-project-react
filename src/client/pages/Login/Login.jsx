@@ -71,9 +71,9 @@ export const Login = (props) => {
             Login
           </button>
           <p>
-            Don't have an account?{" "}
+            Don't have an account? {" "}
             <span className="link" onClick={handleRegisterButton}>
-              Sign up now
+              Sign up
             </span>
           </p>
         </form>
