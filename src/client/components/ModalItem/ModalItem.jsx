@@ -1,21 +1,21 @@
 import React from "react";
-import { FiTrash2 } from "react-icons/fi";
-import { Modal, Rate, Button } from "antd";
+// import { FiTrash2 } from "react-icons/fi";
+import { Modal /* Rate,  Button */ } from "antd";
 
 import "./ModalItem.css";
 
 // import { deleteItem } from "../../pages/Favorite/Favorite.jsx";
 
-const desc = ["1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"];
+// const desc = ["1 Star", "2 Stars", "3 Stars", "4 Stars", "5 Stars"];
 
 const ModalItem = ({ visible, onCancel, content, movie, serie }) => {
   if (!content) return;
 
   const { name, synopsis, director, actors, country, date } = content;
 
-  const handleButtonClick = (e) => {
-    // deleteItem(movie ? movie : serie, e);
-  };
+  // const handleButtonClick = (e) => {
+     // deleteItem(movie ? movie : serie, e);
+  // };
 
   return (
     <Modal
@@ -30,7 +30,7 @@ const ModalItem = ({ visible, onCancel, content, movie, serie }) => {
       className="custom-modal"
       footer={
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Button
+          {/* <Button
             key="back"
             onClick={handleButtonClick}
             className="delete-button-modal"
@@ -39,7 +39,7 @@ const ModalItem = ({ visible, onCancel, content, movie, serie }) => {
           </Button>
           <div>
             <Rate tooltips={desc} />
-          </div>
+          </div> */}
         </div>
       }
     >
