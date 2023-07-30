@@ -24,10 +24,17 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      dispatch({ type: "LOGIN", payload: user });
-      dispatch({ type: "SET_USER_DONE" });
+    const userJSON = localStorage.getItem("user");
+    if (userJSON) {
+      try {
+        const user = JSON.parse(userJSON);
+        dispatch({ type: "LOGIN", payload: user });
+        dispatch({ type: "SET_USER_DONE" });
+      } catch (error) {
+        // Handle JSON parsing error here, if needed.
+        console.error("Error parsing user data:", error);
+        dispatch({ type: "SET_USER_DONE" });
+      }
     } else {
       dispatch({ type: "SET_USER_DONE" });
     }

@@ -1,6 +1,6 @@
 import React from "react";
-import { Modal, Rate, Button } from "antd";
 import { FiTrash2 } from "react-icons/fi";
+import { Modal, Rate, Button } from "antd";
 
 import "./ModalItem.css";
 

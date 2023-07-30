@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Spin } from "antd";
+import toast, { Toaster } from "react-hot-toast";
+import { LoadingOutlined } from "@ant-design/icons";
 import { FiTrash2, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import "./Favorite.css";
@@ -52,7 +55,9 @@ export const Favorite = () => {
   const deleteItem = async (item, event) => {
     event.preventDefault();
     let id = item?.movie?.id || item?.serie?.id;
+    let name = item?.movie?.name || item?.serie?.name;
     try {
+      toast.success(`"${name}" deleted successfully`);
       await apiCall("favorites/delete", "DELETE", {
         user: user,
         id: id,
@@ -79,6 +84,15 @@ export const Favorite = () => {
     });
   };
 
+  const antIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 24,
+      }}
+      spin
+    />
+  );
+
   return (
     <div>
       <Navigator />
@@ -88,74 +102,94 @@ export const Favorite = () => {
         content={modalContent}
       />
       <div className="row-container">
-        <h2>{`${user.firstName}'s Favorites`}</h2>
-        <div className="scroll-container">
-          <h1>Movies</h1>
-          <div className="movies-container" ref={moviesContainerRef}>
-            {movies.map((movie) => (
-              <>
-                <div className="movie-item" key={movie.id}>
-                  <img
-                    src={movie.image}
-                    alt={movie.title}
-                    onClick={() => openPopup(movie)}
-                  />
-                  <button
-                    className="delete-button"
-                    onClick={(e) => deleteItem({ movie }, e)}
-                  >
-                    <FiTrash2 className="delete-icon" />
-                  </button>
-                </div>
-              </>
-            ))}
-          </div>
-          <button
-            className="scroll-button-left"
-            onClick={() => scrollLeft(moviesContainerRef)}
-          >
-            <FiChevronLeft className="arrow-icon" />
-          </button>
-          <button
-            className="scroll-button-right"
-            onClick={() => scrollRight(moviesContainerRef)}
-          >
-            <FiChevronRight className="arrow-icon" />
-          </button>
-        </div>
-        <div className="scroll-container">
-          <h1>Series</h1>
-          <div className="series-container" ref={seriesContainerRef}>
-            {series.map((serie) => (
-              <div className="serie-item" key={serie.id}>
-                <img
-                  src={serie.image}
-                  alt={serie.title}
-                  onClick={() => openPopup(serie)}
-                />
-                <button
-                  className="delete-button"
-                  onClick={(e) => deleteItem({ serie }, e)}
-                >
-                  <FiTrash2 className="delete-icon" />
-                </button>
+        {user ? (
+          <>
+            <h2>{`${user.firstName}'s Favorites`}</h2>
+            <div className="scroll-container">
+              <h1>Movies</h1>
+              <div className="movies-container" ref={moviesContainerRef}>
+                {movies.map((movie) => (
+                  <>
+                    <div className="movie-item" key={movie.id}>
+                      <img
+                        src={movie.image}
+                        alt={movie.title}
+                        onClick={() => openPopup(movie)}
+                      />
+                      <button
+                        className="delete-button"
+                        onClick={(e) => deleteItem({ movie }, e)}
+                      >
+                        <FiTrash2 className="delete-icon" />
+                      </button>
+                    </div>
+                  </>
+                ))}
               </div>
-            ))}
-          </div>
-          <button
-            className="scroll-button-left"
-            onClick={() => scrollLeft(seriesContainerRef)}
-          >
-            <FiChevronLeft className="arrow-icon" />
-          </button>
-          <button
-            className="scroll-button-right"
-            onClick={() => scrollRight(seriesContainerRef)}
-          >
-            <FiChevronRight className="arrow-icon" />
-          </button>
-        </div>
+              <button
+                className="scroll-button-left"
+                onClick={() => scrollLeft(moviesContainerRef)}
+              >
+                <FiChevronLeft className="arrow-icon" />
+              </button>
+              <button
+                className="scroll-button-right"
+                onClick={() => scrollRight(moviesContainerRef)}
+              >
+                <FiChevronRight className="arrow-icon" />
+              </button>
+            </div>
+
+            <div className="scroll-container">
+              <h1>Series</h1>
+              <div className="series-container" ref={seriesContainerRef}>
+                {series.map((serie) => (
+                  <div className="serie-item" key={serie.id}>
+                    <img
+                      src={serie.image}
+                      alt={serie.title}
+                      onClick={() => openPopup(serie)}
+                    />
+                    <button
+                      className="delete-button"
+                      onClick={(e) => deleteItem({ serie }, e)}
+                    >
+                      <FiTrash2 className="delete-icon" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <button
+                className="scroll-button-left"
+                onClick={() => scrollLeft(seriesContainerRef)}
+              >
+                <FiChevronLeft className="arrow-icon" />
+              </button>
+              <button
+                className="scroll-button-right"
+                onClick={() => scrollRight(seriesContainerRef)}
+              >
+                <FiChevronRight className="arrow-icon" />
+              </button>
+            </div>
+          </>
+        ) : (
+          // <h2>Loading...</h2>
+          <Spin indicator={antIcon} />
+        )}
       </div>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+        }}
+      />
     </div>
   );
 };
